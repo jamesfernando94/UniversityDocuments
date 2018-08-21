@@ -1,0 +1,33 @@
+\documentclass[a4paper,12pt]{scrreprt}
+\input{documentSetup.tex}
+\input{codeListingStyles.tex}
+
+\graphicspath{ {images/} }
+\usepackage[
+    backend=biber,
+    style=ieee,
+    ]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{Report Title}
+\author{James Fernando}
+\date{\today}
+
+\begin{document}
+    \begin{titlepage}
+        \maketitle
+    \end{titlepage}
+    \tableofcontents
+    
+    \input{01-Introduction.tex}
+    
+    \input{10-Conclusion.tex}
+
+    
+     \printbibliography
+    
+     \begin{appendices}
+         
+     \end{appendices}
+\end{document}
