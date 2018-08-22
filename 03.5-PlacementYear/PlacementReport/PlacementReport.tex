@@ -1,33 +1,46 @@
-\documentclass[a4paper,12pt]{scrreprt}
+\documentclass[a4paper,12pt]{scrartcl}
 \input{documentSetup.tex}
 \input{codeListingStyles.tex}
 
 \graphicspath{ {images/} }
 \usepackage[
-    backend=biber,
-    style=ieee,
-    ]{biblatex}
+	backend=biber,
+	style=ieee,
+	]{biblatex}
 
 \addbibresource{references.bib}
 
-\title{Report Title}
+\title{Damarel Placement Report}
 \author{James Fernando}
 \date{\today}
 
 \begin{document}
-    \begin{titlepage}
-        \maketitle
-    \end{titlepage}
-    \tableofcontents
-    
-    \input{01-Introduction.tex}
-    
-    \input{10-Conclusion.tex}
-
-    
-     \printbibliography
-    
-     \begin{appendices}
-         
-     \end{appendices}
+	
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	
+	\input{01-Introduction.tex}
+	\input{02-CompanyBackground.tex}
+	\input{03-PlacementRole.tex}
+	\input{04-FirstWeekTasks.tex}
+	\input{05-FtpUploader.tex}
+	\input{06-FileEditor.tex}
+	\input{07-AboutBox.tex}
+	\input{08-Swagger.tex}
+	\input{09-TurnReportGenerator.tex}
+	\input{10-InvoiceGenerator.tex}
+	\input{11-SkillsGained.tex}
+	\input{12-Conclusion.tex}
+	\newpage
+	
+	\printbibliography
+	\newpage
+	
+	\begin{appendices}
+	
+	\end{appendices}
 \end{document}
