@@ -1,12 +1,15 @@
 \section{Invoice Generator}{
 	The invoice generator project is the larger project where the turn report generator came from. This project was for me to replace the current invoice generation which utilises crystal reports and implement my own invoice generation using another PDF generation tool.
+	\subsubsection*{Current Invoice Generation}{
+		Currently, we are using Crystal Reports to generate the invoices and reports. This is a third party report generation tools. Some expertise is needed to create a Crystal Report templates, therefore, these templates need to be created by our development team. This takes up valuable development time for trivial tasks like moving an address field or changing the contact person name. Therefore with the use of a designer the customers themselves would be able to carry out these tasks.
+	}
 	\subsubsection*{Invoice Research}{
-		My first step was to conduct some research into what the invoice generation needed to support, this involved looking at some invoice templates online and some of the current crystal reports templates. This allowed me to find what features were required by the PDF generation tool e.g. Tables, UNICODE etc.
+		My first step was to conduct some research into what the invoice generation needed to support, this involved looking at some invoice templates online and some of the current crystal reports templates. This allowed me to find what features were required by the PDF generation tool e.g. Tables, Unicode etc.
 	}
 	\subsubsection*{Invoice Design}{
-		The designer for the invoice was to follow the same principal as the Turn report designer and would allow for the dragging and dropping of elements on the invoice page however this would be more complex as some of the elements on the page would need to be positioned absolutely on the page, for example so that addresses could be lined up with the envelope windows. Again these would need to be stored as templates. 
+		The designer for the invoice was to follow the same principal as the Turn report designer and would allow for the dragging and dropping of elements on the invoice page however this would be more complex as some of the elements on the page would need to be positioned absolutely on the page, for example, so that addresses could be lined up with the envelope windows. Again these would need to be stored as templates. 
 	}
 	\subsubsection*{Invoice Generation}{
-		This would need to be done using the same generator as used in the Turn report generator which is why research on the requirements for the invoice was completed before choosing the PDF generator for the Turn report generator.
+		This would need to be done using the same generator as used in the Turn report generator which is why research on the requirements for the invoice was completed before choosing the PDF generator for the Turn report generator. While I and Jonathan were developing the PDF generator for the turn report generator we made sure that the PDF generation interface we created would be able to also handle the Invoice generation so that the code could be reused.
 	}
 }
