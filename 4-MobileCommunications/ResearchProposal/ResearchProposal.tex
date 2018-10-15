@@ -1,0 +1,32 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\input{documentSetup.tex}
+\input{codeListingStyles.tex}
+
+\graphicspath{ {images/} }
+\usepackage[
+	backend=biber,
+	style=ieee,
+	]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{Research Proposal on the LTE Radio Access Network(E-UTRAN)}
+\author{James Fernando}
+\date{\today}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage	
+	\section{Introduction}{}
+	\section{What to do}{}
+	\section{References Used}
+	
+	\newpage
+	
+	\printbibliography[heading=bibintoc,title=References]
+\end{document}
