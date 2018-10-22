@@ -1,0 +1,62 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\input{documentSetup.tex}
+\input{codeListingStyles.tex}
+
+\graphicspath{ {images/} }
+\usepackage[
+	backend=biber,
+	style=ieee,
+	]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{829H1 Real Time Embedded Systems Exercise 1}
+\author{Candidate No: 105936}
+\date{\today}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	
+	\section{Introduction}
+	{
+		
+	}
+
+	\section{Equipment}
+	{
+		\subsection{Hardware}{
+			The experiments carried out in this report were run on the Freedom-K64F prototyping board\cite{nxpproducts2014}. To use this board we needed to connect the board to the computer using the debug port and copy across the program we wish to run and then press the reset button to load the program.
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.5\textwidth]{FRDM-K64F-ANGLE}
+				\caption{An Image of the Freedom-K64F Board used during experimentation\cite{nxpproducts2014}}
+				\label{img:FRDM-K64F}
+			\end{figure}
+			Also in the last experiment we used and Oscilloscope to measure the voltage signals from the board to ensure that the program was working properly.
+		}
+		\subsection{Software}
+		{
+			To develop the experiments I used Arm's mbed cloud IDE. This allows users to write c++ code and compile it to a device of their choice. 
+		}
+	}
+	
+	\section{Experiments}
+	{
+		
+	}
+
+	\section{Conclusion}
+	{
+	
+	}
+	
+	\newpage
+	
+	\printbibliography[heading=bibintoc,title=References]
+\end{document}
