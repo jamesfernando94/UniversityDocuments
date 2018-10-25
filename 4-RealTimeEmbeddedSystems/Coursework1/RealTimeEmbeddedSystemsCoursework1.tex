@@ -25,7 +25,7 @@
 	
 	\section{Introduction}
 	{
-		
+		This report outlines the work completed during the laboratory sessions, what equipment was used and what was learnt. Code listings for some of the created programs can be found in \cref{Appendix:start}.
 	}
 
 	\section{Equipment}
@@ -61,7 +61,7 @@
 			}
 			\subsubsection{Varying the Wait Function}
 			{
-				In addition to initially using the \lstinline|wait()| function I also used the \lstinline|wait_ms()| which allowed me to specify the wait time in milliseconds.
+				In addition to initially using the \lstinline|wait()| function I also used the \lstinline|wait_ms()| which allowed me to specify the wait time in milliseconds. The code for this part can be found in \cref{appendix:ex1-1}
 			}
 			\subsubsection{Using Different LEDs}
 			{
@@ -69,7 +69,7 @@
 			}
 			\subsubsection{Using Multiple LEDs Together}
 			{
-				This worked surprisingly nicely as the LEDs were close enough that setting colours to be on at the same time meant that they would combine for example I was able to combine red and green to make yellow. I was also able to combine all of them to make white. 
+				This worked surprisingly nicely as the LEDs were close enough that setting colours to be on at the same time meant that they would combine for example I was able to combine red and green to make yellow. I was also able to combine all of them to make white. A couple of programs demonstrating this can be found in \cref{appendix:ex1-2} and \cref{appendix:ex1-3}.
 			}
 			\subsubsection{Why set the value of the LEDs to 1 and 0}
 			{
@@ -85,12 +85,12 @@
 			}
 			\subsubsection{Replacing myled=1 with myled.write(1)}
 			{
-				This has the same function I believe what is happening is that the \lstinline|DigitalOut| class overloads the assignment operator so that \lstinline|.write()| is called on the value is assigned to the object. 
+				This has the same function I believe what is happening is that the \lstinline|DigitalOut| class overloads the assignment operator so that \lstinline|.write()| is called on the value is assigned to the object. The program for this experiment can be found in \cref{appendix:ex2-1}.
 			}
 		}
 		\subsection{Digital Input}
 		{
-			This consisted of using everything I had learnt so far and also using the value of the \lstinline|SW2| switch to change the function of the lights. This was quite simple as all you have to do is call the read function on the input you wish and the value is provided. The slightly difficult task was creating the oscilloscope program as I had to find out the time period needed for a 100hz and 200hz frequency and then all I had to do was set the value of the pin. I used the PTC16 port on the board to output the current to, this was identified using figure \ref{img:FRDM-K64F-HEADERPINS}.
+			This consisted of using everything I had learnt so far and also using the value of the \lstinline|SW2| switch to change the function of the lights. This was quite simple as all you have to do is call the read function on the input you wish and the value is provided. A program which changed the colour of the light if you press the switch can be found at \cref{appendix:ex3-1}. The slightly difficult task was creating the oscilloscope program as I had to find out the time period needed for a 100hz and 200hz frequency and then all I had to do was set the value of the pin. I used the PTC16 port on the board to output the current to, this was identified using \cref{img:FRDM-K64F-HEADERPINS}. This program can be found at \cref{appendix:ex3-2}
 			\begin{figure}
 				\centering
 				\includegraphics[width=\textwidth]{frdm_k64f_reve4_header_pinout}
