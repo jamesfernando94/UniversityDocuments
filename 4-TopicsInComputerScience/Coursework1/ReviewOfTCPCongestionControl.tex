@@ -33,7 +33,13 @@
 	}
 	\section{CUBIC: a new TCP-friendly high-speed TCP variant\cite{HaRheeXuCubic}}
 	{
-		
+		This paper proposed a novel new way of implementing BIC(Binary Increase Control) TCP using a cubic function. This provided two benefits the width of the curve could be adjusted in the cubic implementation which means that for connections with small round trip times it wouldn't follow the curve too quickly. Also implementing the binary increase algorithm could be quite computationally expensive where as implementing the cubic function would be very easy.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\textwidth]{BICVsCubicRTT}
+			\caption{An Image showing the difference between CUBIC and BIC with a respect to round trip times\cite{deawookim2015}}
+			\label{fig:BICVsCubicRTT}
+		\end{figure}
 	}
 	\section{Improving Datacenter Performance and Robustness with Multipath TCP\cite{RaiciuBarrePluntkeGreenhalghWischikHandleyMultipathTCPArticle}}
 	{
