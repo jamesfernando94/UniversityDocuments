@@ -29,11 +29,17 @@
 	}
 	\section{Simulation-based Comparisons of Tahoe,Reno, and SACK TCP\cite{FallFloydTahoeRenoSack}}
 	{
-		
+		This paper outlines how selective acknowledgements could be used to improve the performance of TCP when a number of packets are dropped. The paper looks at how Tahoe, Reno, New-Reno and, Sack TCP handles 1,2,3 and, 4 dropped packets. The paper shows that Reno and New-Reno have problems recovering when they have a Fast Retransmit followed by a retransmit timeout and Tahoe struggles with any form of packet loss as it conducts slow-start after every packet loss. The approach of validating the use of Selective acknowledgements are show in the graphs in the paper and can be found in \cref{fig:CoparisonOfTCPWith4DroppedPackets}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\textwidth]{CoparisonOfTCPWith4DroppedPackets}
+			\caption{An Graph showing how the various TCP implementations handles three dropped packets\cite{FallFloydTahoeRenoSack}}
+			\label{fig:CoparisonOfTCPWith4DroppedPackets}
+		\end{figure}
 	}
 	\section{CUBIC: a new TCP-friendly high-speed TCP variant\cite{HaRheeXuCubic}}
 	{
-		This paper proposed a novel new way of implementing BIC(Binary Increase Control) TCP using a cubic function. This provided two benefits the width of the curve could be adjusted in the cubic implementation which means that for connections with small round trip times it wouldn't follow the curve too quickly. Also implementing the binary increase algorithm could be quite computationally expensive where as implementing the cubic function would be very easy.
+		This paper proposed a novel new way of implementing BIC(Binary Increase Control) TCP using a cubic function. This provided two benefits the width of the curve could be adjusted in the cubic implementation which means that for connections with small round trip times it wouldn't follow the curve too quickly, a graph showing this can be seen in \cref{fig:BICVsCubicRTT}. Implementing the binary increase algorithm would also be quite computationally expensive where as implementing the cubic function would be relatively easy.
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=0.75\textwidth]{BICVsCubicRTT}
@@ -46,6 +52,6 @@
 		
 	}
 	\newpage
-	
+	\clearpage
 	\printbibliography[heading=bibintoc,title=References]
 \end{document}
