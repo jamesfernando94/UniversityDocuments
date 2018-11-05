@@ -28,15 +28,39 @@
 	}
 	\section{Random Input Generator}
 	{
+		For this I used a Bernoulli Binary Generator this block allows for the random generation of binary numbers
 		\subsection{Parameters}
 		{
-			
+			The most important parameter for this block is the Sample time parameter this allows for me to set the data rate of the connection. This is because the sample time represents how often the generator will generate a bit and if you take the inverse of that it represents the data rate.
 		}
 	}
 	\section{BPSK Modulator}
+	{
+		I used the standard binary modulator which converts the binary data from 1s and 0s to frequencies.
+		\subsection{Parameters}
+	}
 	\section{Fading Channel Block}
 	{
+		I used a Single input single output fading channel block. This allows for me to set the parameters for the fading of the channels, giving me the tools to simulate the various fading models.
 		\subsection{Parameters}
+		{
+			The parameters for this block allow me to manage the fading on each of the multipath channels, I used the Rayleigh Fading distribution channel
+		}
+	}
+	\section{Simulating Fading Models}{
+		\subsection{Flat Fading}
+		{
+			
+		}
+		\subsection{Frequency Selective Fading}
+		{
+			
+		}
+		\subsection{Slow Fading}
+		{
+			
+		}
+		\subsection{Fast Fading}
 		{
 			
 		}
