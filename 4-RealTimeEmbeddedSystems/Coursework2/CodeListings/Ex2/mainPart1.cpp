@@ -1,27 +1,20 @@
+/* Program: A simple Timer Activate Tera Term terminal to test.*/
 #include "mbed.h"
+#include <string>
 
-DigitalOut myled(LED1);
-DigitalOut yourled(LED2);
-
-int main() {
-  char i=0; //declare variable i, and set to 0
-  while(1){ //start endless loop
-  while(i<5) { //start first conditional while loop
-     myled.write(1);
-     wait(0.2);
-     myled.write(0);
-     wait(0.2);
-     i++; //increment i
-  } //end of first conditional while loop
-  while(i>0) { //start second conditional loop
-     yourled.write(1);
-     wait(0.2);
-     yourled.write(0);
-     wait(0.2);
-     i--;
-  }
-  break;
-     } //end infinite loop block
-} //end of main
-
-
+Timer t; // define Timer with name "t"
+Serial pc(USBTX, USBRX);
+int main()
+{
+    for(int i = 0; i <= 10; i++) { // Test 1 to 10 characters
+        string str = "";
+        for(int j = 0; j < i; j++) { // Add i characters to string str
+            str += "a";
+        }
+        t.reset();
+        t.start(); //start the timer
+        pc.printf("%s\n", str.c_str());
+        t.stop(); //stop the timer
+        pc.printf("The time taken for %i characters was %f seconds\n", i, t.read()); //print to pc
+    }
+}
