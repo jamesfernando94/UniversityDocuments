@@ -1,0 +1,81 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\input{documentSetup.tex}
+\input{codeListingStyles.tex}
+
+\graphicspath{ {images/} }
+\usepackage[
+	backend=biber,
+	style=ieee,
+	]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{829H1 Real-Time Embedded Systems Exercise 1}
+\author{Candidate No: 105936}
+\date{\today}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	
+	\section{Introduction}
+	{
+		This report outlines the work completed during the laboratory sessions, what equipment was used and what was learnt. Code listings for some of the created programs can be found in \cref{Appendix:start}.
+	}
+
+	\section{Equipment}
+	{
+		\subsection{Hardware}{
+			The experiments carried out in this report were run on the Freedom-K64F prototyping board\cite{nxpproducts2014}. To use this board we needed to connect the board to the computer using the debug port and copy across the program we wish to run and then press the reset button to load the program.
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.5\textwidth]{FRDM-K64F-ANGLE}
+				\caption{An Image of the Freedom-K64F Board used during experimentation\cite{nxpproducts2014}}
+				\label{img:FRDM-K64F}
+			\end{figure}
+			Also in the last experiment we used an Oscilloscope to measure the voltage signals from the board to ensure that the program was working properly.
+			\todo{remove this if not necessary}
+		}
+		\subsection{Software}
+		{
+			To develop the experiments I used Arm's mbed cloud IDE. This allows users to write c++ code and compile it to a device of their choice. 
+		}
+	}
+	
+	\section{Experiments}
+	{
+		\subsection{Interrupts}
+		{
+			Interrupts seem to work in a similar way to event handlers in other programming languages in that they allow you to run a function out of sequence which can be called from another object. In the example the red led is being turned on and off when the button SW2 is being released this is because the function \lstinline|ISR1()| is being called when the button is released. Code for this can be found in 
+			\subsubsection{Interrupt is triggered by falling edge}
+			{
+				This means that the code should be changed so that the function is called when the button is pressed not when its released therefore all we need to change is the \lstinline|button.rise(&ISR1);| to \lstinline|button.fall(&ISR1);|
+			}
+			\subsubsection{Two Interrupts on a single switch}
+			{
+				The interrupts I created worked by switching the green led when it was pressed down and the red led when released. This meant I had to create another function \lstinline|ISR2()| which would switch the green led.
+			}
+			
+			\subsubsection{Showing the function runs independent of the while loop}
+			{
+				The led is being turned on and off independently of the while loop this can be show by increasing the wait time in the loop so that the led can be turned on and off without the led flashing.
+			}
+
+		}
+
+	}
+
+	\section{Conclusion}
+	{
+		In conclusion a lot was learnt and the ability to interface with the different components on the board has grown. Also knowledge about how to develop on embedded systems has been attained and should provide a useful starting ground for future development.
+	}
+	
+	\newpage
+	\input{Appendix.tex}
+	\printbibliography[heading=bibintoc,title=References]
+\end{document}
