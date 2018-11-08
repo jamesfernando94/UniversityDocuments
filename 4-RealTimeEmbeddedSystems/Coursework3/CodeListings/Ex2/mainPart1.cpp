@@ -1,20 +1,25 @@
-/* Program: A simple Timer Activate Tera Term terminal to test.*/
+/*2 PWM values generated in turn, with full on and off included for 
+comparison. for not using PWM function directly */
 #include "mbed.h"
-#include <string>
-
-Timer t; // define Timer with name "t"
-Serial pc(USBTX, USBRX);
-int main()
-{
-    for(int i = 0; i <= 10; i++) { // Test 1 to 10 characters
-        string str = "";
-        for(int j = 0; j < i; j++) { // Add i characters to string str
-            str += "a";
-        }
-        t.reset();
-        t.start(); //start the timer
-        pc.printf("%s\n", str.c_str());
-        t.stop(); //stop the timer
-        pc.printf("The time taken for %i characters was %f seconds\n", i, t.read()); //print to pc
-    }
+DigitalOut motor(PTD3);
+int i;
+int main() {
+   while(1) {
+      motor = 0; //motor switched off for 3 secs
+      wait (3);
+      for (i=0;i<3000;i=i+1) { //3000 PWM cycles, medium-high duty cycle
+        motor = 1;
+        wait_us(600); //output high for 600us
+        motor = 0;
+        wait_us(400); //output low for 400us
+      }
+      for (i=0;i<3000;i=i+1) { //3000 PWM cycles, high duty cycle
+        motor = 1;
+        wait_us(950); //output high for 950us
+        motor = 0;
+        wait_us(50); //output low for 50us
+      }
+     motor = 1; //motor switched fully on for 3 secs
+     wait (3);
+  }
 }
