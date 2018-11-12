@@ -50,7 +50,7 @@
 	\section{Simulating Fading Models}{
 		\subsection{Flat Fading}
 		{
-			
+			To recreate a model that displays an example of flat fading I need to create a result which shows that $B_S << B_C$ and $T_S >> \sigma_\tau$ Starting with the $B_S << B_C$ we create an example of this as $B_S = 1/T_S$ and $B_C = 1/\tau_{max}$. Therefore I can simply set $T_S = 10^{-4}$ and meaning $B_S \approx 10kHz$ the Bandwidth coherence ($B_C$) is represented by the inverse of the largest path delay this means all I have to do is set the largest path delay to more than the $T_S$ which is $10^{-4}$ therefore I set $\tau_{max} = 10^{-3}$. Which should satisfy $B_S << B_C$. Now we need to satisfy $T_S >> \sigma_\tau$ $T_S$ is the symbol period but as we are using a Binary modulator this can be equal to the bit period which would be equivalent to the inverse of the data rate. $\sigma_\tau$ is equivalent to the inverse of the doppler shift in the SISO fading channels doopler parameters. Therefore if we set the data rate to 10kbps this would give us a sample time of $10^{-4}$ so all I have to do is make sure I set the inverse of the doppler to less than 
 		}
 		\subsection{Frequency Selective Fading}
 		{
