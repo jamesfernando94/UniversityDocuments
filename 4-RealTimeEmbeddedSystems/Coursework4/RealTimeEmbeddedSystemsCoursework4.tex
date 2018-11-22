@@ -25,41 +25,34 @@
 	
 	\section{Introduction}
 	{
-		This report focuses on using serial communications on the board and shows the work completed during the laboratory sessions, what equipment was used and what was learnt. Code listings for some of the created programs can be found in \cref{Appendix:start}.
-	}
-
-	\section{Equipment}
-	{
-		\subsection{Hardware}{
-			The experiments carried out in this report were run on the Freedom-K64F prototyping board\cite{nxpproducts2014}. To use this board, we needed to connect the board to the computer using the debug port and copy across the program we wish to run and then press the reset button to load the program.
-			\begin{figure}[h]
-				\centering
-				\includegraphics[width=0.5\textwidth]{FRDM-K64F-ANGLE}
-				\caption{An Image of the Freedom-K64F Board used during experimentation\cite{nxpproducts2014}}
-				\label{img:FRDM-K64F}
-			\end{figure}
-			We also needed to use an oscilloscope in the exercise, for this you usually need to know what pin you are outputting to, therefore I used \cref{img:pinout} to find this.
-			\begin{figure}[h]
-				\centering
-				\includegraphics[width=0.5\textwidth]{frdm_k64f_reve4_header_pinout}
-				\caption{An Image showing the pin names one the Freedom-K64F Board\cite{armlimited2015}}
-				\label{img:pinout}
-			\end{figure}
-		}
-		\subsection{Software}
-		{
-			To develop the experiments, I used Arm's mbed cloud IDE. This allows users to write c++ code and compile it to a device of their choice. 
-		}
+		This report focuses on using serial communications on the board and shows the work completed during the laboratory sessions and what was learnt. Code listings for some of the created programs can be found in \cref{Appendix:start}.
 	}
 	
 	\section{Experiments}
 	{
 		\subsection{Serial Communications}
 		{
-			For this experiment I created a SPI master object which allowed me to output data using serial methods on three pins, these pins were PTD2 which was the MOSI, PTD3 the MISO and PTD1 which was the clock.
+			For this experiment I created a SPI master object which allowed me to output data using serial methods on three pins, these pins were PTD2 which was the MOSI, PTD3 the MISO and PTD1 which was the clock. 
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.5\textwidth]{Ex1/Task1-Edited}
+				\caption{An Image showing the output on the oscilloscope when running code from \cref{appendix:ex1-1}}
+				\label{img:Ex1-Task1}
+			\end{figure}
+			\cref{img:Ex1-Task1} demonstrates the output of sending a word out using serial communication. Here the blue line represents the clock and red the signals.
+			
 			\subsubsection{Using Different SPI Modes}
 			{
-				This changes the clock signal
+				This changes the clock signal as shown in the 4 images below.
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=0.45\textwidth]{Ex1/mode0}
+					\includegraphics[width=0.45\textwidth]{Ex1/mode1}
+					\includegraphics[width=0.45\textwidth]{Ex1/mode2}
+					\includegraphics[width=0.45\textwidth]{Ex1/mode3}
+					\caption{Images showing the same word being written using different clock modes}
+					\label{img:DifferentClockModes}
+				\end{figure}
 			}
 		}
 		\subsection{Linking Two Boards together}
