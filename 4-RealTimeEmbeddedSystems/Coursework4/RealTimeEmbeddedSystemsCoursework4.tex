@@ -43,21 +43,41 @@
 			
 			\subsubsection{Using Different SPI Modes}
 			{
-				This changes the clock signal as shown in the 4 images below.
+				This changes the clock signal as shown in \cref{img:ClockMode0}, \cref{img:ClockMode1}, \cref{img:ClockMode2} and \cref{img:ClockMode3}.
 				\begin{figure}[h]
 					\centering
-					\includegraphics[width=0.45\textwidth]{Ex1/mode0}
-					\includegraphics[width=0.45\textwidth]{Ex1/mode1}
-					\includegraphics[width=0.45\textwidth]{Ex1/mode2}
-					\includegraphics[width=0.45\textwidth]{Ex1/mode3}
-					\caption{Images showing the same word being written using different clock modes}
-					\label{img:DifferentClockModes}
+					\includegraphics[width=\textwidth]{Ex1/mode0}
+					\caption{This figure shows clock mode 0 please note that the red is the clock and blue is the word being transmitted}
+					\label{img:ClockMode0}
 				\end{figure}
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=\textwidth]{Ex1/mode1}
+					\caption{This shows clock mode 1}
+					\label{img:ClockMode1}
+				\end{figure}
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=\textwidth]{Ex1/mode2}
+					\caption{This shows clock mode 2}
+					\label{img:ClockMode2}
+				\end{figure}
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=\textwidth]{Ex1/mode3}
+					\caption{This shows clock mode 3}
+					\label{img:ClockMode3}
+				\end{figure}
+			}
+		
+			\subsubsection{Using a Different Number of bits}
+			{
+				The code for 12 bit operation can be found in \cref{appendix:ex1-2}. I am now sending the binary number 100010100001 this is equivalent to 0x8A1 or 2209 in decimal.
 			}
 		}
 		\subsection{Linking Two Boards together}
 		{
-
+			
 		}
 	}
 

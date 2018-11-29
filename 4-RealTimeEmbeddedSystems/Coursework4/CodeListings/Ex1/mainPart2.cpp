@@ -1,9 +1,15 @@
+/* Sets up the mbed as SPI master, and continuously sends a single byte*/
 #include "mbed.h"
-
-PwmOut PWM1(PTC10); //create a PWM output called PWM1 on pin PTC10
+SPI ser_port(PTD2, PTD3, PTD1); // mosi, miso, sclk
+char switch_word ; //word we will send
 
 int main()
 {
-    PWM1.pulsewidth_ms(5); // set PWM period to 10 ms
-    PWM1=0.5; // set duty cycle to 50%
+    ser_port.format(12,0); // Setup the SPI for 8 bit data, Mode 0 operation
+    ser_port.frequency(1000000); // Clock frequency is 1MHz
+    while (1) {
+        switch_word=0b100010100001; // 0b means that the following number is in binary
+        ser_port.write(switch_word); //send switch_word
+        wait_us(50);
+    }
 }
