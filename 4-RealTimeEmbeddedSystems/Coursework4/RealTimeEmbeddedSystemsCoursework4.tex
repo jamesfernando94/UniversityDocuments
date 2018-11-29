@@ -68,16 +68,33 @@
 					\caption{This shows clock mode 3}
 					\label{img:ClockMode3}
 				\end{figure}
+				As you can see from the graphs the same word is being transmitted in each configuration. However the clock signal is changing. This is because we are changing the clock mode through the different phases of the signal.
 			}
 		
 			\subsubsection{Using a Different Number of bits}
 			{
-				The code for 12 bit operation can be found in \cref{appendix:ex1-2}. I am now sending the binary number 100010100001 this is equivalent to 0x8A1 or 2209 in decimal.
+				The code for 12 bit operation can be found in \cref{appendix:ex1-2}. I am now sending the binary number 100010100001 this is equivalent to 0x8A1 or 2209 in decimal. The oscilloscope output for this can be seen in \cref{img:12bit0x8a1}. The figure clearly shows that more bits are being transmitted per word and if you read the values you can see it's transmitting correctly.
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=\textwidth]{Ex1/12bit0x8a1}
+					\caption{This shows 0x8A1 being transmitted as 12 bits with clock mode 0}
+					\label{img:12bit0x8a1}
+				\end{figure}
+				I also attempted to display a 16 bit word this was 0x8AA1 or 1000101010100001 in binary this can be seen in \cref{img:16bit0x8aa1}.
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=\textwidth]{Ex1/16bit0x8aa1}
+					\caption{This shows 0x8AA1 being transmitted as 16 bits with clock mode 0}
+					\label{img:16bit0x8aa1}
+				\end{figure}
 			}
 		}
 		\subsection{Linking Two Boards together}
 		{
-			
+			\subsubsection{Master}
+			{
+				This generates the master program which allows a slave to be attached to the board using the outputs
+			}
 		}
 	}
 
