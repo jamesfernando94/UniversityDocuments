@@ -80,7 +80,7 @@
 					\caption{This shows 0x8A1 being transmitted as 12 bits with clock mode 0}
 					\label{img:12bit0x8a1}
 				\end{figure}
-				I also attempted to display a 16 bit word this was 0x8AA1 or 1000101010100001 in binary this can be seen in \cref{img:16bit0x8aa1}.
+				I also attempted to display a 16 bit word this was 0x8AA1 or 1000101010100001 in binary this can be seen in \cref{img:16bit0x8aa1} and the code can be found in \cref{appendix:ex1-3}.
 				\begin{figure}[h]
 					\centering
 					\includegraphics[width=\textwidth]{Ex1/16bit0x8aa1}
@@ -91,10 +91,30 @@
 		}
 		\subsection{Linking Two Boards together}
 		{
-			\subsubsection{Master}
-			{
-				This generates the master program which allows a slave to be attached to the board using the outputs
+			This requires the use of a master and slave program the master program allows a slave to be attached to the board using the outputs. It sends a word to the slave board and gets a reply and sets the LEDs accordingly. The slave program receives a word from the master and sets the LEDs accordingly then sends a word back depending on the switch position code for these two programs can be found in \cref{appendix:ex2}.
+			\subsubsection{}{
+				This is a example of a serial connection as we have the clock and two data lines one for input and one for output.
 			}
+			\subsubsection{What happens when MOSI is disconnected}
+			{
+				What happens when the master output/slave input is disconnected.
+			}
+			\subsubsection{What happens when MISO is disconnected}
+			{
+				What happens when the master input/slave output is disconnected.
+			}
+			\subsubsection{What happens when clock is disconnected}
+			{
+				What happens when the clock line is disconnected.
+			}
+			\subsubsection{What happens when the slave select/chip select is removed}
+			{
+				
+			}
+		}
+		\subsection{USB}
+		{
+			
 		}
 	}
 
