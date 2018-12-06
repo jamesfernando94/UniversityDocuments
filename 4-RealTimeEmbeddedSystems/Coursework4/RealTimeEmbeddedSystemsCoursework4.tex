@@ -68,19 +68,19 @@
 					\caption{This shows clock mode 3}
 					\label{img:ClockMode3}
 				\end{figure}
-				As you can see from the graphs the same word is being transmitted in each configuration. However the clock signal is changing. This is because we are changing the clock mode through the different phases of the signal.
+				As you can see from the graphs the same word is being transmitted in each configuration. However, the clock signal is changing. This is because we are changing the clock mode through the different phases of the signal.
 			}
 		
 			\subsubsection{Using a Different Number of bits}
 			{
-				The code for 12 bit operation can be found in \cref{appendix:ex1-2}. I am now sending the binary number 100010100001 this is equivalent to 0x8A1 or 2209 in decimal. The oscilloscope output for this can be seen in \cref{img:12bit0x8a1}. The figure clearly shows that more bits are being transmitted per word and if you read the values you can see it's transmitting correctly.
+				The code for 12-bit operation can be found in \cref{appendix:ex1-2}. I am now sending the binary number 100010100001 this is equivalent to 0x8A1 or 2209 in decimal. The oscilloscope output for this can be seen in \cref{img:12bit0x8a1}. The figure clearly shows that more bits are being transmitted per word and if you read the values you can see it's transmitting correctly.
 				\begin{figure}[h]
 					\centering
 					\includegraphics[width=\textwidth]{Ex1/12bit0x8a1}
 					\caption{This shows 0x8A1 being transmitted as 12 bits with clock mode 0}
 					\label{img:12bit0x8a1}
 				\end{figure}
-				I also attempted to display a 16 bit word this was 0x8AA1 or 1000101010100001 in binary this can be seen in \cref{img:16bit0x8aa1} and the code can be found in \cref{appendix:ex1-3}.
+				I also attempted to display a 16-bit word this was 0x8AA1 or 1000101010100001 in binary this can be seen in \cref{img:16bit0x8aa1} and the code can be found in \cref{appendix:ex1-3}.
 				\begin{figure}[h]
 					\centering
 					\includegraphics[width=\textwidth]{Ex1/16bit0x8aa1}
@@ -91,22 +91,22 @@
 		}
 		\subsection{Linking Two Boards together}
 		{
-			This requires the use of a master and slave program the master program allows a slave to be attached to the board using the outputs. It sends a word to the slave board and gets a reply and sets the LEDs accordingly. The slave program receives a word from the master and sets the LEDs accordingly then sends a word back depending on the switch position code for these two programs can be found in \cref{appendix:ex2}. This is a example of a serial connection as we have the clock and two data lines one for input and one for output.
+			This requires the use of a master and slave program the master program allows a slave to be attached to the board using the outputs. It sends a word to the slave board and gets a reply and sets the LEDs accordingly. The slave program receives a word from the master and sets the LEDs accordingly then sends a word back depending on the switch position code for these two programs can be found in \cref{appendix:ex2}. This is an example of a serial connection as we have the clock and two data lines one for input and one for output.
 			
 			\subsubsection{What happens when MOSI is disconnected}
 			{
-				When the master output/slave input is disconnected the master board still lights up this is because the slave output line is still connected therefore as the master does not know that it is not transmitting it assumes the system is still working correctly. Also the clock line is still connected so the slave knows when and how to transmit back.
+				When the master output/slave input is disconnected the master board still lights up this is because the slave output line is still connected therefore as the master does not know that it is not transmitting it assumes the system is still working correctly. Also, the clock line is still connected so the slave knows when and how to transmit back.
 				
 			}
 			\subsubsection{What happens when MISO is disconnected}
 			{
-				When the master input/slave output is disconnected nothing works this is a bit of a surprise to me as I expected the master to still be able to control the slaves lights. as the slave is still receiving the masters output.
+				When the master input/slave output is disconnected nothing works this is a bit of a surprise to me as I expected the master to still be able to control the slave's lights. as the slave is still receiving the master's output.
 			}
 			\subsubsection{What happens when clock is disconnected}
 			{
-				When the clock line is disconnected none of the functions work this is because the slave is not able to tell where one bit ends and another begins and it also does not know how to send the data back to the master.
+				When the clock line is disconnected none of the functions work this is because the slave is not able to tell where one bit ends, and another begins and it also does not know how to send the data back to the master.
 			}
-			\subsubsection{What happens when the slave select/chip select is removed}
+			\subsubsection{What happens when the slave select/chip select is removed?}
 			{
 				When the slave/chip select line is removed again none of the functions work this is because the SPI library system we are using requires this line to be connected.5
 			}
@@ -114,24 +114,23 @@
 		\subsection{USB}
 		{
 			This implements a simple program where the computers mouse is moved on each iteration of the for loop this allows us to test that the USBMouse library is working properly the code for this can be found at \cref{appendix:ex3-1}.
-			\subsubsection{Page Scroll-er}
+			\subsubsection{Page Scroller}
 			{
 				This is another simple program which when run simply continuously scrolls to the bottom of the page. Code for this can be found in \cref{appendix:ex3-2}.
 			}
 			\subsubsection{Mouse Buttons}
 			{
-				For this task I had to use knowledge I gained from earlier exercises. Therefore I added interrupts on the switches which called the \lstinline|USBMouse.press()| and \lstinline|USBMouse.release()| the code for this can be found in \cref{appendix:ex3-3}.
+				For this task I had to use knowledge I gained from earlier exercises. Therefore, I added interrupts on the switches which called the \lstinline|USBMouse.press()| and \lstinline|USBMouse.release()| the code for this can be found in \cref{appendix:ex3-3}.
 			}
 			\subsubsection{Accelerometer Mouse}
 			{
-				For this task I had to use an additional library to access the accelerometer data. I used the FXOS8700Q from \url{https://os.mbed.com/users/JimCarver/code/FXOS8700Q/}.
+				For this task I had to use an additional library to access the accelerometer data. I used the FXOS8700Q\cite{accelLib} library. I then needed to use these values in the accelerator data to make the mouse move, the code for this can be found in \cref{appendix:ex3-4}.
 			}
 		}
 	}
-
 	\section{Conclusion}
 	{
-		In conclusion, this was a useful quick introduction into how to develop using interrupts and timers also learning how to use tera term to view the console output of the board.
+		In conclusion, this was a useful exercise on using serial communications and then learning how to use the USBDevice functions and also how to use the accelerometer values. I would have liked to go on and use the joystick to control the mouse however I ran out of time.
 	}
 	
 	\newpage
