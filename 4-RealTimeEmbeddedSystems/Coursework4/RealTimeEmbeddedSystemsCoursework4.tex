@@ -91,30 +91,41 @@
 		}
 		\subsection{Linking Two Boards together}
 		{
-			This requires the use of a master and slave program the master program allows a slave to be attached to the board using the outputs. It sends a word to the slave board and gets a reply and sets the LEDs accordingly. The slave program receives a word from the master and sets the LEDs accordingly then sends a word back depending on the switch position code for these two programs can be found in \cref{appendix:ex2}.
-			\subsubsection{}{
-				This is a example of a serial connection as we have the clock and two data lines one for input and one for output.
-			}
+			This requires the use of a master and slave program the master program allows a slave to be attached to the board using the outputs. It sends a word to the slave board and gets a reply and sets the LEDs accordingly. The slave program receives a word from the master and sets the LEDs accordingly then sends a word back depending on the switch position code for these two programs can be found in \cref{appendix:ex2}. This is a example of a serial connection as we have the clock and two data lines one for input and one for output.
+			
 			\subsubsection{What happens when MOSI is disconnected}
 			{
-				What happens when the master output/slave input is disconnected. Master still lights up
+				When the master output/slave input is disconnected the master board still lights up this is because the slave output line is still connected therefore as the master does not know that it is not transmitting it assumes the system is still working correctly. Also the clock line is still connected so the slave knows when and how to transmit back.
+				
 			}
 			\subsubsection{What happens when MISO is disconnected}
 			{
-				What happens when the master input/slave output is disconnected. Doesn't work
+				When the master input/slave output is disconnected nothing works this is a bit of a surprise to me as I expected the master to still be able to control the slaves lights. as the slave is still receiving the masters output.
 			}
 			\subsubsection{What happens when clock is disconnected}
 			{
-				What happens when the clock line is disconnected. Doesn't work
+				When the clock line is disconnected none of the functions work this is because the slave is not able to tell where one bit ends and another begins and it also does not know how to send the data back to the master.
 			}
 			\subsubsection{What happens when the slave select/chip select is removed}
 			{
-				Doesn't work
+				When the slave/chip select line is removed again none of the functions work this is because the SPI library system we are using requires this line to be connected.5
 			}
 		}
 		\subsection{USB}
 		{
 			This implements a simple program where the computers mouse is moved on each iteration of the for loop this allows us to test that the USBMouse library is working properly the code for this can be found at \cref{appendix:ex3-1}.
+			\subsubsection{Page Scroll-er}
+			{
+				This is another simple program which when run simply continuously scrolls to the bottom of the page. Code for this can be found in \cref{appendix:ex3-2}.
+			}
+			\subsubsection{Mouse Buttons}
+			{
+				For this task I had to use knowledge I gained from earlier exercises. Therefore I added interrupts on the switches which called the \lstinline|USBMouse.press()| and \lstinline|USBMouse.release()| the code for this can be found in \cref{appendix:ex3-3}.
+			}
+			\subsubsection{Accelerometer Mouse}
+			{
+				For this task I had to use an additional library to access the accelerometer data. I used the FXOS8700Q from \url{https://os.mbed.com/users/JimCarver/code/FXOS8700Q/}.
+			}
 		}
 	}
 

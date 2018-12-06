@@ -26,7 +26,24 @@ int main()
             recd_val = ser_port.read();  // Read byte from master
             ser_port.reply(switch_word); // Make this the next reply
         }
-        //now set leds according to received word.
-        (continues as in the Master Program).
+        // set leds according to incoming word from slave
+        red_led = 0; //preset both to 0
+        green_led = 0;
+        recd_val = recd_val & 0x03; //AND out unwanted bits
+        if (recd_val == 1)
+        {
+            red_led = 1;
+            green_led = 0;
+        }
+        if (recd_val == 2)
+        {
+            red_led = 0;
+            green_led = 1;
+        }
+        if (recd_val == 3)
+        {
+            red_led = 1;
+            green_led = 1;
+        }
     }
 }
