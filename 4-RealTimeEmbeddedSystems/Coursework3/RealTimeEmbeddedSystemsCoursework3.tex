@@ -1,0 +1,67 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\input{documentSetup.tex}
+\input{codeListingStyles.tex}
+
+\graphicspath{ {images/} }
+\usepackage[
+	backend=biber,
+	style=ieee,
+	]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{829H1 Real-Time Embedded Systems Exercise 3}
+\author{Candidate No: 105936}
+\date{\today}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	
+	\section{Introduction}
+	{
+		This report outlines the work completed during the laboratory sessions, what equipment was used and what was learnt. Code listings for some of the created programs can be found in \cref{Appendix:start}.
+	}
+
+	\section{Experiments}
+	{
+		\subsection{PWM}
+		{
+			For this experiment I created a PwmOut object and set the period of it to 0.01 seconds and the duty cycle to 0.5 to make identifying the period easy.
+			\subsubsection{Changing the duty cycle}
+			{
+				I then went on to change the duty cycle to 80\% and verified my results on the oscilloscope. This shows that the wave was on for 0.008 seconds and off for 0.002 seconds at a time. The code for this can be found in \cref{appendix:ex1-1}
+			}
+			\subsubsection{Changing the period function}
+			{
+				I also changed the period function and used the \lstinline|period_ms()| and \lstinline|pulsewidth_ms()| functions and I was able to recreate the same wave with each. For the \lstinline|period_ms()| function I had to convert the time to milliseconds. For the \lstinline|pulsewidth_ms()| function I had to halve the millisecond time to get the program to output the same wave. The code for the \lstinline|pulsewidth_ms()| example can be found in \cref{appendix:ex1-2}.
+			}
+		}
+		\subsection{Generating PWM in software}
+		{
+			The given example manually implements the PWM function which generates the wave on the oscilloscope.
+			\subsubsection{Modifying the wait times to increase the duty cycle}
+			{
+				Firstly I changed the wait times so that the low duty cycle was now a medium high duty cycle of 60\% and the high duty cycle is now a very high duty cycle of 95\%. This was done by changing the wait times accordingly. I also change the time each of the duty cycles were running to 3 seconds to make it a bit quicker to test. The code for this experiment can be found in \cref{appendix:ex2-1}
+			}
+			\subsubsection{Modifying the program to use PwmOut}
+			{
+				This was quite simple as all I had to change was the \lstinline|DigitalOut| to a \lstinline|PwmOut|. Set the period in us to 1000 and then remove the for loops and set the desired duty cycle followed by a wait. The code for this can be found in \cref{appendix:ex2-2}
+			}
+		}
+	}
+
+	\section{Conclusion}
+	{
+		In conclusion, this was a useful quick introduction into how to develop using the PWM class to manage power output to a pin and therefore a external device.
+	}
+	\printbibliography[heading=bibintoc,title=References]
+	\newpage
+	\input{Appendix.tex}
+
+\end{document}
