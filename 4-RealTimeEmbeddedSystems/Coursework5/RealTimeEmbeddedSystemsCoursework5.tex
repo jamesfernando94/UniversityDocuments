@@ -1,0 +1,50 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\input{documentSetup.tex}
+\input{codeListingStyles.tex}
+
+\graphicspath{ {images/} }
+\usepackage[
+	backend=biber,
+	style=ieee,
+	]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{829H1 Real-Time Embedded Systems Exercise 5}
+\author{Candidate No: 105936}
+\date{\today}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	
+	\section{Introduction}
+	{
+		This report focuses on using Ethernet communications on the board and shows the work completed during the laboratory sessions and what was learnt. Code listings for some of the created programs can be found in \cref{Appendix:start}.
+	}
+	
+	\section{Experiments}
+	{
+		\subsection{Connect 2 mbed boards via Ethernet}
+		{
+			
+		}
+		\subsection{Connecting to IBMs Internet of Things}
+		{
+			I had to use the program at \url{https://os.mbed.com/users/steveshun/code/IoTClientEthernet/} to allow me to manually set the MAC address of the board allowing me to run it over the University's network.
+		}
+	}
+	\section{Conclusion}
+	{
+		In conclusion, this was a useful exercise on using Ethernet communications and then how to use and set-up the device as an Internet of things devices. This served as a useful start for the project I plan on completing over the winter.
+	}
+	
+	\newpage
+	\input{Appendix.tex}
+	\printbibliography[heading=bibintoc,title=References]
+\end{document}
