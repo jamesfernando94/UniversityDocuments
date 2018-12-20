@@ -32,11 +32,47 @@
 	{
 		\subsection{Connect 2 mbed boards via Ethernet}
 		{
-			
+			\subsubsection{Exercise 1}{
+				This was completed using the code provided however did not work at the first attempt this was due to a faulty board. Once the board was replaced it worked as expected. \Cref{img:ex1-client} and \Cref{img:ex1-server} shows the outputs from the application once the new board was substituted.
+				\begin{figure}
+					\centering
+					\includegraphics[width=\textwidth]{Client}
+					\caption{shows the tera term output from the client application}
+					\label{img:ex1-client}
+				\end{figure}
+				\begin{figure}
+					\centering
+					\includegraphics[width=\textwidth]{Server}
+					\caption{shows the tera term output from the server application}
+					\label{img:ex1-server}
+				\end{figure}
+			}
+			\subsection{Exercise 2}
+			{
+				This involved me attempting to send the accelerometer data from one board to the other and vice versa. However the first problem I hit was that the sockets library we are using does not support the sending of floats. which is not too surprising however after this I attempted to convert the float into a char array so I could send that over the Ethernet cable however whenever I attempted to read that char array I had weird values in it. Unfortunately I ran out of time due to the problem earlier meaning that I was unable to get this working. The code for this can be found in \cref{appendix:ex2-Client} and \cref{appendix:ex2-Server} also \cref{img:ex2-client} and  \cref{img:ex2-server} shows the gibberish output I was talking about.
+				\begin{figure}
+					\centering
+					\includegraphics[width=\textwidth]{ClientAcceleratorData}
+					\caption{shows the tera term output from the client application}
+					\label{img:ex2-client}
+				\end{figure}
+				\begin{figure}
+					\centering
+					\includegraphics[width=\textwidth]{ServerAcceleratorData}
+					\caption{shows the tera term output from the server application}
+					\label{img:ex2-server}
+				\end{figure}
+			}
 		}
 		\subsection{Connecting to IBMs Internet of Things}
 		{
-			I had to use the program at \url{https://os.mbed.com/users/steveshun/code/IoTClientEthernet/} to allow me to manually set the MAC address of the board allowing me to run it over the University's network.
+			I had to use the program at \url{https://os.mbed.com/users/steveshun/code/IoTClientEthernet/} to allow me to manually set the MAC address of the board allowing me to run it over the University's network. After that it was quite simple to work and I got the image shown in \cref{img:IBMIoT} which shows the values of the sensors on the board. 
+			\begin{figure}
+				\centering
+				\includegraphics[width=\textwidth]{IBMIoT}
+				\caption{shows the display from the IBM IoT Application which describles the state of the board}
+				\label{img:IBMIoT}
+			\end{figure}
 		}
 	}
 	\section{Conclusion}
