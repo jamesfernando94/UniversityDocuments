@@ -1,23 +1,28 @@
 \section{Dynamic Resource Allocation(Scheduler)}
 {
 	The LTE standard itself does not specify how resources are dynamically allocated this is left open so that companies who are implementing the LTE network are able to choose the best option for them. The reason it is not possible to simply use a standard scheduler algorithm is, because of the need to account for different connections that each of the UE's have, therefore a specific algorithm taking this into account must be used. I will briefly go over a few papers which demonstrate an example of a Scheduler algorithm.
-	\subsection{Particle Swarm Optimization and $\beta$MWM network traffic modeling \cite{DRASwarmWthNetwork7250422}}
-	{
-		\url{https://ieeexplore.ieee.org/document/7250422}
-	}
-
-	\subsection{Particle swarm optimization \cite{DRASwarm6388227}}
-	{
-		\url{https://ieeexplore.ieee.org/document/6388227}
-	}
-
+	\begin{displaycquote}{DRAGuaranteedRA6085383}
+		Three classical allocation algorithms, i.e., Max C/I, Round Robin (RR) and Proportional Fair (PF) Scheduling [6], are widely deployed in practice. However, all these algorithms do not take Quality of Services (QoS) into consideration.
+	\end{displaycquote}
+	The following algorithms rely on there being enough resources for the connected users this means that the Radio Admission control is quite important as if too many users are connected the following algorithms will leave some users without a usable connection.
 	\subsection{QoS guaranteed \cite{DRAGuaranteedRA6085383}}
 	{
-		\url{https://ieeexplore.ieee.org/document/6085383}
+		Theoretically this works quite simply by estimating the resources required by the UE based on the signal strength of the UE and assigning those resources in order of priority. Note that when estimating the resources required for the UE it is done based on providing the minimum QoS to the UE's. This can mean that there can be unused resources left which could potentially be used to improve performance for some users. also the figures in the paper clearly show this algorithm to be an improvement on the \enquote{classical ones}.
 	}
-	
+
+	\subsection{Particle swarm optimisation \cite{DRASwarm6388227}}
+	{
+		This works by using the swarm theory to solve the allocation problem, this makes use of a swarm of particles which each have their own values these are then run through fitness function. The paper shows a number of benefits for the PSO(Particle Swarm Optimisation) algorithm over the QoS Guarantee algorithm.
+	}
+
+	\subsection{Particle Swarm Optimisation and $\beta$MWM network traffic modeling \cite{DRASwarmWthNetwork7250422}}
+	{
+		This builds on the PSO algorithm and includes some information on the bandwidth requirement for the traffic flows. The paper shows some evidence on how it improved on the PSO algorithm.
+
+	}
+
 	\subsection{QoS aware Packet Scheduling with adaptive resource allocation \cite{DRAPacketScheduling6192856}}
 	{
-		\url{https://ieeexplore.ieee.org/document/6192856}
+		This algorithm splits the traffic into queues based on what the data is for and its priority the users are then sorted within these queues. This allows you to use different scheduling algorithms for different queues as this quote shows \enquote{Control information is the most important type of traffic and it is given the highest priority. However it is transmitted by Round Robin (RR) manner as control information of all users is equally important. \cite{DRAPacketScheduling6192856}}
 	}
 }
