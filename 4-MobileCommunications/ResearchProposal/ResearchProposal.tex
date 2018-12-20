@@ -1,0 +1,40 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\input{documentSetup.tex}
+\input{codeListingStyles.tex}
+
+\graphicspath{ {images/} }
+\usepackage[
+	backend=biber,
+	style=ieee,
+	]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{Research Proposal on the LTE Radio Access Network(E-UTRAN)}
+\author{James Fernando}
+\date{\today}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage	
+
+	\section{Research plan}
+	{
+		\begin{itemize}
+			\item {very briefly provide a high level overview of How LTE works including Mobile units, RAN and the core network.}
+			\item {have an overview of the E-UTRAN and the components which make it up}
+			\item  {Go through each component explaining how it works and how it connects to the other components}
+		\end{itemize}
+	}
+	
+	
+	
+	\newpage
+	
+	\printbibliography[heading=bibintoc,title=References]
+\end{document}

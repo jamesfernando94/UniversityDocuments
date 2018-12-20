@@ -1,0 +1,48 @@
+\documentclass[a4paper,12pt]{scrreprt}
+\input{documentSetup.tex}
+\input{codeListingStyles.tex}
+
+\graphicspath{ {images/} }
+\usepackage[
+	backend=biber,
+	style=ieee,
+	]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{Mobile Communications Project}
+\author{James Fernando}
+\date{\today}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	\chapter{Part 1 Research Project}
+	{
+		\input{1-ResearchProject/01-Introduction.tex}
+		\input{1-ResearchProject/02-LTE-RAN.tex}
+		\input{1-ResearchProject/03-InterCellRadioResourceManagement.tex}
+		\input{1-ResearchProject/04-RBControl.tex}
+		\input{1-ResearchProject/05-ConnectionMovabilityControl.tex}
+		\input{1-ResearchProject/06-RadioAdmissionControl.tex}
+		\input{1-ResearchProject/07-DynamicResourceAllocation.tex}
+		\input{1-ResearchProject/08-Conclusion.tex}
+		
+	}
+	\chapter{Part 2 Simulation Project}
+	{
+		\input{2-SimulationProject/01-CharacteristicsOfFadingChannels.tex}
+		\input{2-SimulationProject/02-BitErrorPerformance.tex}
+		\input{2-SimulationProject/03-HighOrderModulation.tex}
+		
+	}
+	
+	\newpage
+	
+	\printbibliography[heading=bibintoc,title=References]
+\end{document}
