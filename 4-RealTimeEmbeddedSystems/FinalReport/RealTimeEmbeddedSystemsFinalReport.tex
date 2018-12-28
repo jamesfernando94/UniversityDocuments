@@ -1,0 +1,61 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\input{documentSetup.tex}
+\input{codeListingStyles.tex}
+
+\graphicspath{ {images/} }
+\usepackage[
+	backend=biber,
+	style=ieee,
+	]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{829H1 Real-Time Embedded Systems Final Report}
+\author{Candidate No: 105936}
+\date{\today}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+
+	\section{Abstract}
+	{
+		The IoT space is full of applications and devices to make life easier this project has also been inspired by this trend. The main section of this report is how to connect the freedom K64F\cite{nxpproducts2014} to an external API and display text on the application shield. It looks into the process of displaying current weather information on the application shields display.
+	}
+
+	\section{Introduction}
+	{
+		This report focuses on using the FRDM-K64F\cite{nxpproducts2014} as a connected device to display weather information on the application shields display. Developing for real time systems relies on making sure that there is no delay or wait for the program in terms of using interrupts correctly and making sure the program runs quickly.
+	}
+	
+	\section{Exercises}
+	{
+	}
+
+	\section{Project}
+	{
+		\subsection{Getting the location}
+		{
+			The first part of the program was to get the board to get it's own location allowing the board to query the weather for the correct location. To do this I first needed to get the current public IP address of the board using the code \lstinline|EthernetInterface.getIPAddress()| only returned the internal IP address. Therefore, I had to use a public API to get the public IP address for this I used \url{https://api.ipify.org}\cite{Degges} 
+		}
+	}
+	
+	\section{Analysis}
+	{
+	
+	}
+	
+	\section{Conclusion}
+	{
+		
+	}
+	
+	\newpage
+	\input{Appendix.tex}
+	\printbibliography[heading=bibintoc,title=References]
+\end{document}
