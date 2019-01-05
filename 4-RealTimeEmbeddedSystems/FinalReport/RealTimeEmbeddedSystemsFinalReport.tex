@@ -39,17 +39,25 @@
 
 	\section{Project}
 	{
-		\subsection{Getting the location}
+		\subsection{Getting the current public IP Address}
 		{
-			The first part of the program was to get the board to get it's own location allowing the board to query the weather for the correct location. To do this I first needed to get the current public IP address of the board using the code \lstinline|EthernetInterface.getIPAddress()| unfortunately this only returned the internal IP address. Therefore, I had to use a public API to get the public IP address for this I used \url{https://api.ipify.org}\cite{Degges}. To use this I would send off a http request to the address and then read the received text back. To send the http request I had to use the \url{https://os.mbed.com/teams/sandbox/code/mbed-http/} library simply importing this library didn't work therefore I had to fork the http examples repository found at \url{https://os.mbed.com/teams/sandbox/code/http-example/} and modify it for my purposes.
+			The first part of the program was to get the board to get it's own ip address allowing the board to query the location for the correct IP. To do this I needed to get the current public IP address of the board using the code \lstinline|EthernetInterface.getIPAddress()| unfortunately this only returned the internal IP address. Therefore, I had to use a public API to get the IP address for this I used \url{https://api.ipify.org}\cite{Degges}. To use this I would send off a http request to the address and then read the received text back. To send the http request I had to use the \url{https://os.mbed.com/teams/sandbox/code/mbed-http/} library simply importing this library didn't work therefore I had to fork the http examples repository found at \url{https://os.mbed.com/teams/sandbox/code/http-example/} and modify it for my purposes.
 		}
 		\subsection{Displaying on the LCD}
 		{
-			This was fairly simple to implement compared to the http library all I needed to do was import the library from \url{https://os.mbed.com/users/chris/code/C12832/} and use the example from \url{https://os.mbed.com/users/chris/code/app-shield-LCD/file/f8ef5e45e488/main.cpp/} as guidance on how to use the library. 
+			This was fairly simple to implement compared to the http library. As all I needed to do was import the library from \url{https://os.mbed.com/users/chris/code/C12832/} and use the example from \url{https://os.mbed.com/users/chris/code/app-shield-LCD/file/f8ef5e45e488/main.cpp/} as guidance on how to use the library. 
 		}
 		\subsection{Re-factoring the code}
 		{
-			After implementing the function to get the IP address and the display it to the screen I realised I would either have to change the layout of the code so that I could support the display of all of the information or just display one piece of information. I decided that the best way to go was to support displaying all of the information this meant that I would need to create a separate class which would manage the getting and displaying of the data.
+			After implementing the function to get the IP address and the display it to the screen I realised I would either have to change the layout of the code so that I could support the display of all of the information or just display one piece of information. I decided that the best way to go was to support displaying all of the information this meant that I would need to create a number of functions to manage what would be displayed and how to change the information on the display.
+		}
+		\subsection{Using the joystick to scroll through the display}
+		{
+			To make use of the joystick I only had to add \lstinline|InterruptIn joy_up(A2);| for up and down and then make use of the inputs for this. My initial plan was to use the interrupt to update the screens display however it is not possible to call serial communications from an interrupt meaning I cannot use the printf to the LCD or to the debug USB. To overcome this issue I need to use mbed events to do this I used information from the blog \url{https://os.mbed.com/blog/entry/Simplify-your-code-with-mbed-events/}\cite{Jongboom2018}. This would allow me to add functions to be called on a separate thread. After this I now had the basic layout of the system working so all I needed to do was to add functionality to get the location and then weather information.
+		}
+		\subsection{Getting the Location}
+		{
+		
 		}
 	}
 	
