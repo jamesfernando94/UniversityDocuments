@@ -41,7 +41,7 @@
 	{
 		\subsection{Getting the location}
 		{
-			The first part of the program was to get the board to get it's own location allowing the board to query the weather for the correct location. To do this I first needed to get the current public IP address of the board using the code \lstinline|EthernetInterface.getIPAddress()| only returned the internal IP address. Therefore, I had to use a public API to get the public IP address for this I used \url{https://api.ipify.org}\cite{Degges} 
+			The first part of the program was to get the board to get it's own location allowing the board to query the weather for the correct location. To do this I first needed to get the current public IP address of the board using the code \lstinline|EthernetInterface.getIPAddress()| unfortunately this only returned the internal IP address. Therefore, I had to use a public API to get the public IP address for this I used \url{https://api.ipify.org}\cite{Degges}. To use this I would send off a http request to the address and then read the received text back. To send the http request I had to use the \url{https://os.mbed.com/teams/sandbox/code/mbed-http/} library simply importing this library didn't work therefore I had to fork the http examples repository found at \url{https://os.mbed.com/teams/sandbox/code/http-example/} and modify it for my purposes.
 		}
 	}
 	
