@@ -30,11 +30,33 @@
 
 	\section{Introduction}
 	{
-		This report focuses on using the FRDM-K64F\cite{nxpproducts2014} as a connected device to display weather information on the application shields display. Developing for real time systems relies on making sure that there is no delay or wait for the program in terms of using interrupts correctly and making sure the program runs quickly.
+		This report focuses on using the FRDM-K64F\cite{nxpproducts2014} as a connected device to display weather information on the application shields display. Developing for real time systems relies on making sure that there is no delay or wait for the program in terms of using interrupts correctly and making sure the program runs quickly. I will start by going through the exercises I completed during the lab sessions before going on to how I created the weather application which runs on the board. 
 	}
 	
 	\section{Exercises}
 	{
+		I conducted a number of exercises/experiments over the course of the term and learnt a number of ways in which the outputs of the board can be used and other programming constructs. In this section I will go over what was learnt and how it helped me with the project which was completed.
+		\subsection{Parallel IO}
+		{
+			This was a relatively gentle introduction on programming for embedded systems. It allowed me to get used to how to use the mbed IDE and how developing for the board works. This exercise was based on direct programming where the binaries are complied to run on the specific hardware. This is sightly different from my background in programming for computers where a program is complied for an Operating system or some other intermediate interface between the program and the hardware. 
+		}
+		\subsection{Interrupt and Timers}
+		{
+			Although I did not use the timer functionality in the end for my project the interrupts were very useful and vital in my view for real time embedded systems as it is necessary for systems to be able to manage changes and be able to react to important information. I ended up using the interrupts feature to deal with the inputs from the joystick although I had to go further and use mbed events\cite{Jongboom2018} as well so that I was able to output to the various displays. This is because it is not possible to output to a serial communication from an interrupt.
+		}
+		\subsection{Power Width Modulation}
+		{
+			
+		}
+		\subsection{Serial Communications}
+		{
+			
+		}
+		\subsection{Ethernet Connections}
+		{
+			
+		}
+		
 	}
 
 	\section{Project}
@@ -57,13 +79,17 @@
 		}
 		\subsection{Getting the Location}
 		{
-		
+			For this all I had to do was use the code from earlier to get the IP address but change the URL to an API which would get the location. I also needed to parse the result so that I could make use of the individual JSON values(I.E. the Latitude and Longitude values). to do this I used this library \url{https://os.mbed.com/users/samux/code/MbedJSONValue/} as it had some documentation on how to use it. This allowed me to relatively easily obtain the latitude and longitude as strings.
+		}
+		\subsection{Displaying the Weather Information}
+		{
+			After I had the obtained the coordinates All I needed to do was to use the API from \url{https://openweathermap.org/api} to get the weather information for the coordinates I obtained earlier. As I was able to display the temperature fairly quickly I decided on adding a description of the weather to the display. The  only slightly complicated thing was converting the temperature value from a double to a string to help me with this I searched stack overflow and found this result \url{https://stackoverflow.com/a/332132}\cite{Schaub2008}.
 		}
 	}
 	
 	\section{Analysis}
 	{
-	
+		
 	}
 	
 	\section{Conclusion}
