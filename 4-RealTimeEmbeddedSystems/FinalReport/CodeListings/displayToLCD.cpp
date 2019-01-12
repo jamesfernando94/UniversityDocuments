@@ -1,15 +1,60 @@
-char* get_ip_address()
+/**
+*   This function displays the correct data depending on the position variable.
+*/
+void display_data(){
+    switch (position){
+        case 0:
+            display_ip_address();
+            break;
+        case 1:
+            display_location();
+            break;
+        case 2:
+            display_temprature();
+            break;
+        case 3:
+            display_weather();
+        default:
+            break;
+    }
+}
+
+/*
+*   This function displays the IP Address
+*/
+void display_ip_address()
 {
-        
-    HttpRequest* request = new HttpRequest(network, HTTP_GET, "http://api.ipify.org/");
-    request->set_header("Content-Type", "application/json");
-    HttpResponse* response = request->send(body, strlen(body));
-    // if response is NULL, check response->get_error()
-    
-    pc.printf("status is %d - %s\n", response->get_status_code(), response->get_status_message());
-    char* ipAddress = response->get_body_as_string().c_str();
-    pc.printf("body is:\n%s\n", ipAddress);
-    
-    delete request; // also clears out the response
-    return ipAddress;
+    lcd.cls();
+    lcd.locate(0, 3);
+    lcd.printf("IP Address: %s", ipAddress.c_str());
+}
+
+/*
+*   This function displays the Latitude and logitude
+*/
+void display_location()
+{
+    lcd.cls();
+    lcd.locate(0, 3);
+    lcd.printf("Latitude: %s\n", latitude.c_str());
+    lcd.printf("Longitude: %s", longitude.c_str());
+}
+
+/*
+*   This function displays the temprature
+*/
+void display_temprature()
+{
+    lcd.cls();
+    lcd.locate(0, 3);
+    lcd.printf("Current Temprature: %s", temprature.c_str());
+}
+
+/*
+* This function displays the wether description
+*/
+void display_weather(){
+    lcd.cls();
+    lcd.locate(0, 3);
+    lcd.printf("Weather Description: %s", weatherDescription.c_str());
 }
