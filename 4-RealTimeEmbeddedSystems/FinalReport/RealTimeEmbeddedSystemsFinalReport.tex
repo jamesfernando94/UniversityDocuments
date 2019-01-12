@@ -43,6 +43,27 @@
 		\subsection{Interrupt and Timers}
 		{
 			Although I did not use the timer functionality in the end for my project the interrupts were very useful and vital in my view for real time embedded systems as it is necessary for systems to be able to manage changes and be able to react to important information. I ended up using the interrupts feature to deal with the inputs from the joystick although I had to go further and use mbed events\cite{Jongboom2018} as well so that I was able to output to the various displays. This is because it is not possible to output to a serial communication from an interrupt.
+			\begin{table}[]
+				\centering
+				\begin{tabular}{|c|c|c|c|}
+					\hline
+					\textbf{\begin{tabular}[c]{@{}c@{}}Character\\ Length\end{tabular}} & \textbf{String} & \textbf{\begin{tabular}[c]{@{}c@{}}Time taken to\\ print to screen\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Difference to one\\ fewer character length\end{tabular}} \\ \hline
+					0 &  & 0.000019 &  \\ \hline
+					1 & a & 0.002075 & 0.002056 \\ \hline
+					2 & aa & 0.003114 & 0.001039 \\ \hline
+					3 & aaa & 0.004154 & 0.00104 \\ \hline
+					4 & aaaa & 0.005194 & 0.00104 \\ \hline
+					5 & aaaaa & 0.006235 & 0.001041 \\ \hline
+					6 & aaaaaa & 0.007275 & 0.00104 \\ \hline
+					7 & aaaaaaa & 0.008314 & 0.001039 \\ \hline
+					8 & aaaaaaaa & 0.009355 & 0.001041 \\ \hline
+					9 & aaaaaaaaa & 0.010395 & 0.00104 \\ \hline
+					10 & aaaaaaaaaa & 0.011435 & 0.00104 \\ \hline
+				\end{tabular}
+				\caption{Showing the time taken to print a string to the screen compared to the character length.}
+				\label{tbl:TimeToPrintToScreen}
+			\end{table} 
+			\cref{tbl:TimeToPrintToScreen} is an example of some fo the results I found while working on the experiments in this section. This experiment was using timers to measure how long it took to write a string to the screen depending on its length. The code for this experiment can be found in \cref{appendix:write-string-timer}.
 		}
 		\subsection{Power Width Modulation}
 		{
@@ -51,16 +72,23 @@
 		\subsection{Serial Communications}
 		{
 			This helped cement knowledge about how serial communications work while also providing a bit of backround information on parallel communication. This was one of the more complicated exercise although did allow for the learning of a number of parts of serial communications such as what the different lines are used for. For example the clock line, MISO, MOSI. I was also able to learn about the different clock modes which would change when the data bits were sent compared to the clock line values. Although the usb mouse functionality was relatively interesting and provided a small insight on the number of features which are available on the board.
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.5\textwidth]{Task1-Edited}
+				\caption{An Image showing the output on the oscilloscope when outputting the byte 10100001}
+				\label{img:AnotatedByteOutput}
+			\end{figure}
+			\Cref{img:AnotatedByteOutput} shows how each signal is interpreted when the byte is transmitted.
 		}
 		\subsection{Ethernet Connections}
 		{
 			This exercise taught me the basics about network communications and provided some of the basic idea for what I could do for my project. Also the IBM application clearly showed what sensors are available to be used.
 		}
-		
 	}
 
 	\section{Project}
 	{
+		The main plan for the project was to create a program which would make the device a simple to use weather station of sorts. It would get its current location and then query a external API for the current weather conditions before displaying the information on the screen.
 		\subsection{Getting the current public IP Address}
 		{
 			The first part of the program was to get the board to get it's own ip address allowing the board to query the location for the correct IP. To do this I needed to get the current public IP address of the board using the code \lstinline|EthernetInterface.getIPAddress()| unfortunately this only returned the internal IP address. Therefore, I had to use a public API to get the IP address for this I used \url{https://api.ipify.org}\cite{Degges}. To use this I would send off a http request to the address and then read the received text back. To send the http request I had to use the \url{https://os.mbed.com/teams/sandbox/code/mbed-http/} library simply importing this library didn't work therefore I had to fork the http examples repository found at \url{https://os.mbed.com/teams/sandbox/code/http-example/} and modify it for my purposes.
@@ -93,7 +121,7 @@
 		{
 			The idea of this program is that all you have to do is plug it in and it works the rest out for you. Therefore to get it working all you need to do is connect the USB and Ethernet and then wait for it to load information. You are able to scroll through the information using the joystick before it loads but all it will read is \lstinline|waiting...| but it will refresh once the data is obtained.
 		}
-		\subsection{Review}
+		\subsection{Review}\label{sec:Review}
 		{
 			I've used the device a couple of time since creating it and it is relatively useful as it is quick to boot up and simply displays the temperature to an accurate level. There are a few improvements which can be made such as remembering the last option selected therefore when the device is connected it does not resort to the ip address display. Another would be that it takes quite a long time to get the IP address. I'm not sure if that is because it is the first http call therefore there is some setup which must be done or the API is a bit slow but it would probably be worth looking into using other API's to get the IP address to see if they are quicker. Another improvement would be to make the values update every so often or add the functionality so that clicking centre on the joystick would update the values as the only way to do it currently is to reboot the device. One final improvement which could be made is the device could display an icon depending on the weather conditions. 
 		}
@@ -101,7 +129,7 @@
 	
 	\section{Conclusion}
 	{
-		
+		Over the course of the module I've learnt a fair amount about developing for embedded systems although I feel that there is much more which can be learnt. I feel that the  project I've created is of usable quality although there are some improvements which can be made and have been mentioned in \cref{sec:Review}. I feel I completed the project I set out to create therefore this has been a success.
 	}
 	
 	\newpage
