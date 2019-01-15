@@ -31,24 +31,45 @@
 	{
 		Currently if we compare software verification to unit testing as a form of guarantee against bugs we see that unit testing is far more popular and there are far more frameworks available to use for unit testing than there are for verifying software. Also, if you look at the current Computer Science Degree at the University of Sussex unit testing is taught in the first year and software verification is not taught until the masters level. This paper will look into the different software verification techniques and why they are not used more often.
 	}
+
+	\section{Software Verification Overview}
+	{
+		Software verification can be looked at as the automatic analysis of a program. One simple example of program verification is type checking which has been implemented in a number of programming languages and is quite common. There are also more complex areas of program verification such as extended static checking and full functional program verification.
+	}
 	
 	\section{Existing Software verification techniques}
 	{
 		There are three types of static analysis are Abstract static analysis, model checking and, bounded model checking.\cite{DSilva2008} 
-		\subsection{Abstract Static Analysis}
+		\subsection{Abstract Static Analysis/Interpretation}
 		{
-			This verification technique was introduced in \cite{Cousot1977} as a way of reducing runtime errors, they saw that strong typing was a start in reducing run time errors and then went on to look into how to make pointers safer. Static analysis allows for the analysis of a program without actually executing the program. The way in which it works is by computing a superset of possible values for each stage of the program. You can then look at the sets for example of the set for a loop parameter is infinite then you can tell that it may not exit\todo{Check that this is correct} or you can check the set of values for a divisor and if one is zero then you may have a divide by zero error. Obviously if these are not in the set of values you can guarantee that the program does not contain divide by zero errors. which is obviously a very useful trait.
+			This verification technique was introduced in \cite{Cousot1977} as a way of reducing runtime errors, they saw that strong typing was a start in reducing run time errors and then went on to look into how to make pointers safer. Static analysis allows for the analysis of a program without actually executing the program. The way in which it works is by computing a superset of possible values for each stage of the program. You can then look at the sets for example if one of the set of values for a divisor is zero then you may have a divide by zero error. Obviously if these are not in the set of values you can guarantee that the program does not contain divide by zero errors.
+		}
+		\subsection{Symbolic Execution}
+		{
+			
+		}
+		\subsection{Full Deductive (Theorem Proving)}
+		{
+			
 		}
 		\subsection{Model Checking}
 		{
-		
+			This involves looking at a program as a set of states and transitions an algorithm can then check the reachable states of the program an find if there is a case where the program may not terminate\cite{DSilva2008}. It is possible to provide properties to clarify and restrict variables as explained in the following quote. \enquote{In general, properties are classified to ‘safety’ and ’liveness’ properties. While the former declares what should not happen (or equivalently, what should always happen), the latter declares what should eventually happen.}\cite{Biere2003} which allow you to show that bad states are inaccessible.
+			\subsubsection{Bounded Model Checking}
+			{
+				This was introduced in a 1999 paper by Biere et al.\cite{Biere1999}. As an effort to reduce the complexity It is a development on Model checking however due to limited computing power and the growing complexity of programs it became difficult to run model checking on programs therefore BMC allows for checking with a limited number of steps.
+			}
 		}
-		\subsection{Bounded Model Checking}
+
 	}
 	
 	\section{Existing Verification Tools}
 	{
 		As a part of looking into how to include software verification in real world applications we need to look at how they can be used in mainstream languages therefore in the following sections I have described a number of tools and what features they support in verifying programs written in mainstream languages.
+		\subsection{Extended Static Checker for Java\cite{Flanagan2002}}
+		{
+			This is a checker which finds common programming errors, this may be one of the problems with these tools they are labelled as tools which find bugs rather than tools which guarantee code quality if you are a programmer generally you don't like finding bugs in your code. Programmers need to write annotations for the program. \enquote{The checker is powered by verification-condition generation and automatic theorem proving techniques.}\cite{Flanagan2002} \todo{Look into how this works more}. This works  on a modular level meaning any method or constructor can be verified
+		}
 	}
 
 	\section{How to bring software verification into the mainstream}
