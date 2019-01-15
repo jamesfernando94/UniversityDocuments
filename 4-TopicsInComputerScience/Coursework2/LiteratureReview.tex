@@ -10,7 +10,7 @@
 
 \addbibresource{references.bib}
 
-\title{Software verification for real world applications}
+\title{Survey of Software verification for real world applications}
 \author{Candidate No: 105936}
 \date{\today}
 
@@ -37,16 +37,18 @@
 		There are three types of static analysis are Abstract static analysis, model checking and, bounded model checking.\cite{DSilva2008} 
 		\subsection{Abstract Static Analysis}
 		{
-			This verification technique was introduced in \cite{Cousot1977} as a way of reducing runtime errors, they saw that strong typing was a start in reducing run time errors and then went on to look into how to make pointers safer. 
+			This verification technique was introduced in \cite{Cousot1977} as a way of reducing runtime errors, they saw that strong typing was a start in reducing run time errors and then went on to look into how to make pointers safer. Static analysis allows for the analysis of a program without actually executing the program. The way in which it works is by computing a superset of possible values for each stage of the program. You can then look at the sets for example of the set for a loop parameter is infinite then you can tell that it may not exit\todo{Check that this is correct} or you can check the set of values for a divisor and if one is zero then you may have a divide by zero error. Obviously if these are not in the set of values you can guarantee that the program does not contain divide by zero errors. which is obviously a very useful trait.
 		}
 		\subsection{Model Checking}
+		{
 		
+		}
 		\subsection{Bounded Model Checking}
 	}
 	
-	\section{Existing Verifiable Languages}
+	\section{Existing Verification Tools}
 	{
-		
+		As a part of looking into how to include software verification in real world applications we need to look at how they can be used in mainstream languages therefore in the following sections I have described a number of tools and what features they support in verifying programs written in mainstream languages.
 	}
 
 	\section{How to bring software verification into the mainstream}
