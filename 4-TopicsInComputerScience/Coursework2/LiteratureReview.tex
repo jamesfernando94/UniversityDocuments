@@ -34,7 +34,7 @@
 
 	\section{Software Verification Overview}
 	{
-		Software verification can be looked at as the automatic analysis of a program. One simple example of program verification is type checking which has been implemented in a number of programming languages and is quite common. There are also more complex areas of program verification such as extended static checking and full functional program verification.
+		Software verification can be looked at as the automatic analysis of a program. One commonplace example of program verification is type checking which has been implemented in a number of programming languages. There are also more complex areas of program verification such as extended static checking and full functional program verification. For the purposes of this report I will be calling Languages which have been designed to be verified as a part of compilation \enquote{Verifiable Languages}. There are a number of these languages which I will go on to outline further in the paper. There are also tools which have been develop to verify existing languages
 	}
 	
 	\section{Existing Software verification techniques}
@@ -44,20 +44,12 @@
 		{
 			This verification technique was introduced in \cite{Cousot1977} as a way of reducing runtime errors, they saw that strong typing was a start in reducing run time errors and then went on to look into how to make pointers safer. Static analysis allows for the analysis of a program without actually executing the program. The way in which it works is by computing a superset of possible values for each stage of the program. You can then look at the sets for example if one of the set of values for a divisor is zero then you may have a divide by zero error. Obviously if these are not in the set of values you can guarantee that the program does not contain divide by zero errors.
 		}
-		\subsection{Symbolic Execution}
-		{
-			
-		}
-		\subsection{Full Deductive (Theorem Proving)}
-		{
-			
-		}
 		\subsection{Model Checking}
 		{
 			This involves looking at a program as a set of states and transitions an algorithm can then check the reachable states of the program an find if there is a case where the program may not terminate\cite{DSilva2008}. It is possible to provide properties to clarify and restrict variables as explained in the following quote. \enquote{In general, properties are classified to ‘safety’ and ’liveness’ properties. While the former declares what should not happen (or equivalently, what should always happen), the latter declares what should eventually happen.}\cite{Biere2003} which allow you to show that bad states are inaccessible.
 			\subsubsection{Bounded Model Checking}
 			{
-				This was introduced in a 1999 paper by Biere et al.\cite{Biere1999}. As an effort to reduce the complexity It is a development on Model checking however due to limited computing power and the growing complexity of programs it became difficult to run model checking on programs therefore BMC allows for checking with a limited number of steps.
+				This was introduced in a 1999 paper by Biere et al.\cite{Biere1999}. As an effort to reduce the complexity, it is a development on Model checking due to limited computing power and the growing complexity of programs it became difficult to run model checking on programs. Therefore, BMC allows for checking with a limited number of steps.
 			}
 		}
 
@@ -68,19 +60,64 @@
 		As a part of looking into how to include software verification in real world applications we need to look at how they can be used in mainstream languages therefore in the following sections I have described a number of tools and what features they support in verifying programs written in mainstream languages.
 		\subsection{Extended Static Checker for Java\cite{Flanagan2002}}
 		{
-			This is a checker which finds common programming errors, this may be one of the problems with these tools they are labelled as tools which find bugs rather than tools which guarantee code quality if you are a programmer generally you don't like finding bugs in your code. Programmers need to write annotations for the program. \enquote{The checker is powered by verification-condition generation and automatic theorem proving techniques.}\cite{Flanagan2002} \todo{Look into how this works more}. This works  on a modular level meaning any method or constructor can be verified
+			This is a checker which finds common programming errors, this may be one of the problems with these tools they are labelled as tools which find bugs rather than tools which guarantee code quality if you are a programmer generally you don't like finding bugs in your code. Programmers need to write annotations for the program. \enquote{The checker is powered by verification-condition generation and automatic theorem proving techniques.}\cite{Flanagan2002} \todo{Look into how this works more}. This works  on a modular level meaning any method or constructor can be verified.
+		}
+		\subsection{Static Driver Verifier/SLAM\cite{Ball2004}}
+		{
+			This was designed to allow Microsoft to verify drivers for their operating systems. The actual tool used to verify drivers was called Static Driver Verifier while slam is the analysis engine it uses. SLAM is actually a tool which can check if a C program correctly uses an external library. I expect that this is one of the best examples of mainstream software verification uses. This is probably because the SDV(Static Driver Verifier) tool is included as a part of the driver developer kit for windows this means that developers have to make sure that their driver is verified before they can release it.
+		}
+		\subsection{\texorpdfstring{Spec\#}{}}
+		{
+			This is not a tool as such it is a language which adds various static analysis features which are checked during compilation. This runs on the .NET framework therefore can be used with other .NET languages. Many developers have easy access to the language through visual studio \enquote{The Spec\# system is fully integrated into the Microsoft Visual Studio environment.}\cite{Barnett2005}. Barnett et al. also lists a number of features which Spec\# adds to C\# such as:
+			\begin{itemize}
+				\item{type support for distinguishing non-null object references from possibly-null object references}
+				\item{method specifications like pre- and postconditions}
+				\item{support for constraining the data fields of objects}
+			\end{itemize}
+			Because this works on the .NET framework functions can be called from other languages meaning it is possible to call a method with parameters which violate the preconditions in this case Spec\# provides the option to specify an exception to be thrown in the case where a precondition is not met.
+		}
+		\subsection{Spark Ada}
+		{
+			Spark is a Verifiable language based on Ada it uses pre and post conditions as contracts for verification. It appears to be used on a number of mission critical pieces of software mainly on embedded systems. 
+		}
+		\subsection{Krakatoa \cite{Marche2018,Filliatre2007}}\label{sec:krakatoa}
+		{
+			This is a verification tool which runs can be run on programs written in Java. Contracts for the code are written in the comments for a method the come from the Java Modelling Language\cite{Burdy2004}. This tool is integrated into the Why IDE which was designed to make it easier to verify programs.
+		}
+		
+	}
+
+	\section{Current State of software verification in Mainstream}
+	{
+		\subsection{Software Verification In Education}
+		{
+			Software verification is not really taught in Universities as mentioned earlier however there is an interesting paper from Feinerer et al. \cite{Feinerer2008} which talks about choosing a a tool to use for teaching Formal software verification. The paper states that \enquote{we think that automated program verification has become mature enough to spread the word in industry, via the students.}\cite{Feinerer2008} bear in mind that this was around 10 years ago therefore it is still surprising why formal software verification hasn't taken off.
+			\subsubsection{Software Quality in education}
+			{
+				In my experience software quality tends to be very low in education this is mainly due to the fact that the project will usually be thrown away or archived after it has been submitted. The software is also usually only tested very gently therefore having formal verification to add code quality seems like a waste of time to students as they're only concerned with functionality of the designed application as that is what is generally tested.
+			}
+		}
+		\subsection{Software Verification In Industry}
+		{
+			Perhaps unsurprisingly software verification seems to be favoured in industries where there is a need for bug free mission critical software for example the space and aviation industry\cite{Feldt2010} and in large software companies for some of their more mission critical projects\cite{Hunt2005} I.E. compliers and Operating system kernels. 
 		}
 	}
 
-	\section{How to bring software verification into the mainstream}
+	\section{Ideas on how to improve Software verification in the Mainstream}
 	{
-		\todo{Come up with an idea about how to bring software verification into the mainstream}
-		\cite{Flanagan2002} shows how to add static checking to Java programs but may not go into how to allow for some parts to be checked and others not to be checked. Possibly through the use of multiple languages for example the .NET enviroment has many languages which can be compiled into .NET libraries and used interchangeably and there are also a number of languages which can be compiled to run on the JVM. Therefore is there an example of a language which compiles into .NET or JVM for use with other libraries.
+		\subsection{Introduce a verifiable language which compiles to the JVM}
+		{
+			Ideally this would work similar to the Spec\# language where it would simply be Java with some extras which makes it verifiable with it also compiling to the JVM so that it can be used in conjunction with other JVM libraries. It would also need to be integrated into an IDE or have various IDE plug-ins to make it easier to start developing using it.
+		}
+		\subsection{Introduce software verification in education}
+		{
+			From some very quick research I can see that Formal Software verification is actually taught at a handful of universities. But most of these are focusing on teaching how to formally verify software rather than  how to use verification tools. An example of this is the Krakatoa tool mentioned in \cref{sec:krakatoa} which is used by the University of La Rioja in their teaching of formal verification as it runs through the steps of the proofs\cite{Romero2018}. Obviously understanding how it works is important but I would argue that for developers at least, understanding how to use the tools is an earlier step which should be taken. This would involve giving formal software verification a similar amount of time to what unit testing currently gets thereby including it in all undergraduate degrees. One of the barriers which may be stopping this is the logic behind the automatic verification which is very complex and difficult to understand although the logic does not necessarily need to be taught to understand how to use formal software verification. 
+		}
 	}
 	
 	\section{Conclusion}
 	{
-	
+		In conclusion there seems to be many tools and many verifiable languages although there doesn't appear to be any which compile to the JVM which could be the reason why it is not more widespread. Legal requirements are useful in forcing some mission critical pieces of software to be formally verified.
 	}
 	
 	\newpage
