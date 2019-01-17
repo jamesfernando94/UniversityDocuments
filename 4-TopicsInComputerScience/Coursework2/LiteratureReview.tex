@@ -64,15 +64,15 @@
 		}
 		\subsection{Static Driver Verifier/SLAM\cite{Ball2004}}
 		{
-			This was designed to allow Microsoft to verify drivers for their operating systems. The actual tool used to verify drivers was called Static Driver Verifier while slam is the analysis engine it uses. SLAM is a tool which can check if a C program correctly uses an external library. I expect that this is one of the best examples of mainstream software verification uses. This is probably because the SDV(Static Driver Verifier) tool is included as a part of the driver developer kit for windows this means that developers have to make sure that their driver is verified before they can release it.
+			This was designed to allow Microsoft to verify drivers for their operating systems. The actual tool used to verify drivers was called Static Driver Verifier while slam is the analysis engine it uses. SLAM is a tool which can \enquote{check that a C program correctly uses the interface to an external library}\cite{Ball2004}. I expect that this is one of the best examples of mainstream software verification uses. This is probably because the SDV(Static Driver Verifier) tool is included as a part of the driver developer kit for windows this means that developers have to make sure that their driver is verified before they can release it.
 		}
 		\subsection{\texorpdfstring{Spec\#}{}}
 		{
 			This is not a tool as such it is a language which adds various static analysis features which are checked during compilation. This runs on the .NET framework therefore can be used with other .NET languages. Many developers have easy access to the language through visual studio \enquote{The Spec\# system is fully integrated into the Microsoft Visual Studio environment.}\cite{Barnett2005}. Barnett et al. also lists several features which Spec\# adds to C\# such as:
 			\begin{itemize}
-				\item{type support for distinguishing non-null object references from possibly-null object references}
-				\item{method specifications like pre- and postconditions}
-				\item{support for constraining the data fields of objects}
+				\item{\enquote{type support for distinguishing non-null object references from possibly-null object references}\cite{Barnett2005}}
+				\item{\enquote{method specifications like pre- and postconditions}\cite{Barnett2005}}
+				\item{\enquote{support for constraining the data fields of objects}\cite{Barnett2005}}
 			\end{itemize}
 			Because this works on the .NET framework functions can be called from other languages meaning it is possible to call a method with parameters which violate the preconditions in this case Spec\# provides the option to specify an exception to be thrown in the case where a precondition is not met.
 		}
