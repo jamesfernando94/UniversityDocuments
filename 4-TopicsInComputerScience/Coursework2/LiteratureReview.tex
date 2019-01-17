@@ -34,15 +34,15 @@
 
 	\section{Software Verification Overview}
 	{
-		Software verification can be looked at as the automatic analysis of a program. One commonplace example of program verification is type checking which has been implemented in several programming languages. There are also more complex areas of program verification such as extended static checking and full functional program verification. For the purposes of this report I will be calling Languages which have been designed to be verified as a part of compilation \enquote{Verifiable Languages}. There are a number of these languages which I will go on to outline further in the paper. There are also tools which have been developed to verify existing languages
+		Software verification can be looked at as the automatic analysis of a program. One commonplace example of program verification is type checking which has been implemented in many programming languages. There are also more complex areas of program verification such as extended static checking and full functional program verification. For the purposes of this report I will be calling Languages which have been designed to be verified as a part of compilation \enquote{Verifiable Languages}. There are a number of these languages which I will go on to outline further in the paper. There are also tools which have been developed to verify existing languages
 	}
 	
 	\section{Existing Software verification techniques}
 	{
-		There are three types of static analysis are Abstract static analysis, model checking and, bounded model checking\cite{DSilva2008}. 
+		According to D'Sliva et al. there are three types of static analysis are Abstract static analysis, model checking and, bounded model checking\cite{DSilva2008}. 
 		\subsection{Abstract Static Analysis/Interpretation}
 		{
-			This verification technique was introduced in \cite{Cousot1977} as a way of reducing runtime errors, they saw that strong typing was a start in reducing run time errors and then went on to investigate how to make pointers safer. Static analysis allows for the analysis of a program without executing the program. The way in which it works is by computing a superset of possible values for each stage of the program. You can then look at the sets for example if one of the set of values for a divisor is zero then you may have a divide by zero error. Obviously if these are not in the set of values you can guarantee that the program does not contain divide by zero errors.
+			This verification technique was introduced in \cite{Cousot1977} by Cousot and Cousot as a way of reducing runtime errors, they saw that strong typing was beneficial in reducing run time errors and then went on to investigate how to make pointers safer. Static analysis allows for the analysis of a program without executing the program. The way in which it works is by computing a superset of possible values for each stage of the program. You can then look at the sets for example if one of the set of values for a divisor is zero then you may have a divide by zero error. Obviously if these are not in the set of values you can guarantee that the program does not contain divide by zero errors.
 		}
 		\subsection{Model Checking}
 		{
