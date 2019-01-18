@@ -1,0 +1,172 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\input{documentSetup.tex}
+\input{codeListingStyles.tex}
+
+\graphicspath{ {images/} }
+\usepackage[
+	backend=biber,
+	style=ieee,
+	]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{Survey of formal program verification tools and languages}
+\author{Candidate No: 105936}
+\date{\today}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	\section{Introduction}
+	{
+		This paper is primarily aimed at providing an introduction over some software verification techniques and tools. More information on each of these can be found by following the references. The paper will firstly start with providing a high level overview of the Topic of software verification before going into some of the techniques used for software verification after which several tools and verifiable languages will be listed and features will be described.
+	}
+
+	\section{Software Verification Overview}
+	{
+		Software verification can be looked at as the automatic analysis of a program. One commonplace example of program verification is type checking which has been implemented in many programming languages. There are also more complex areas of program verification such as extended static checking and full functional program verification. For the purposes of this report I will be calling Languages which have been designed to be verified as a part of compilation \enquote{Verifiable Languages}. There are a number of these languages which I will go on to outline further in the paper. There are also tools which have been developed to verify existing languages
+	}
+	\section{Existing Software verification techniques}
+	{
+		According to D'Sliva et al. there are three types of static analysis are Abstract static analysis, model checking and, bounded model checking\cite{DSilva2008}. 
+		\subsection{Abstract Static Analysis/Interpretation}
+		{
+			This verification technique was introduced in \cite{Cousot1977} by Cousot and Cousot as a way of reducing runtime errors, they saw that strong typing was beneficial in reducing run time errors and then went on to investigate how to make pointers safer. Static analysis allows for the analysis of a program without executing the program. The way in which it works is by computing a superset of possible values for each stage of the program. You can then look at the sets for example if one of the set of values for a divisor is zero then you may have a divide by zero error. Obviously if these are not in the set of values you can guarantee that the program does not contain divide by zero errors.
+		}
+		\subsection{Model Checking}
+		{
+			This involves looking at a program as a set of states and transitions an algorithm can then check the reachable states of the program an find if there is a case where the program may not terminate\cite{DSilva2008}. It is possible to provide properties to clarify and restrict variables as explained in the following quote. \enquote{In general, properties are classified to ‘safety’ and ’liveness’ properties. While the former declares what should not happen (or equivalently, what should always happen), the latter declares what should eventually happen.}\cite{Biere2003} which allow you to show that bad states are inaccessible.
+			\subsubsection{Bounded Model Checking}
+			{
+				This was introduced in a 1999 paper by Biere et al.\cite{Biere1999}. As an effort to reduce the complexity, it is a development on Model checking due to limited computing power and the growing complexity of programs it became difficult to run model checking on programs. Therefore, BMC allows for checking with a limited number of steps.
+			}
+		}
+		
+	}
+	\section{Formal Program Verification Tools}
+	{
+		\subsection{Extended Static Checker for Java\cite{Flanagan2002}}\label{sec:ESCJava}
+		{
+			\subsubsection{Background}
+			{
+				This tool was developed by a group at Compaq Systems. And is based on a section of formal program verification Flanagan et al. called \enquote{Extended Static Checking}\cite{Flanagan2002}. and builds on theory behind static type checkers.
+			}
+			\subsubsection{Details}
+			{
+				This works on a modular level meaning any method or constructor can be verified. Although for this to be implemented the users need to add annotations to the methods so that they can be checked against a specification. The paper\cite{Flanagan2002} styles these as equivalent to comments on the input and outputs of a method.
+			}
+			\subsubsection{Examples of usages}
+			{
+				The authors of Mercator used ESC/Java on their project they were able to annotate 7000 lines of code in around 6 hours and it did find a bug in the project.
+				The developers of ESC/Java also ran the tool on the front end of ESC/Java, it took around 3 weeks to annotate the 30.000 lines of code but found around half a dozen errors\cite{Flanagan2002} the developer decided that the errors found were not worth the three weeks work. However, later on one of the developers conducted a major change in the system during which a bug was introduced. The system would pass all of the testing suites but when trying to run the program it would crash. It took 2 hours to find the problem whereas running ESC/Java on the entire program only took 73 minutes and 3 for the file which contained the error. This shows that it is still beneficial to use this tool even with the extra overhead of adding the annotations due to the advantages gained from greater maintainability.
+			}
+
+		}
+		\subsection{Static Driver Verifier/SLAM\cite{Ball2004}}
+		{
+			\subsubsection{Background}
+			{
+				Due to the problem of device drivers needing to run on the operating system kernel, and therefore poorly written or malicious device drivers causing full OS level crashes. Microsoft decided to produce a tool which \enquote{could automatically check that a C program correctly uses the interface to an external library}\cite{Ball2004}.
+			}
+		
+			\subsection{Details}
+			{
+				The actual tool used to verify drivers was called Static Driver Verifier while SLAM is the analysis engine it uses. The SDV(Static Driver Verifier) tool is included as a part of the driver developer kit for windows this means that developers have to make sure that their driver is verified before they can release it.
+			}
+		}
+		
+		\subsection{Krakatoa \cite{Marche2018,Filliatre2007}}\label{sec:krakatoa}
+		{
+			This is a verification tool which runs can be run on programs written in Java. Contracts for the code are written in the comments for a method the come from the Java Modelling Language\cite{Burdy2004}. The Why tool allows users of krakatoa to follow the proofs for their program making it a powerful teaching tool as an example Romero et al. uses it as a part of their teaching at the University of La Rioja\cite{Romero2018}.
+		}
+		
+		\subsection{KeY}
+		{
+			The KeY project is about trying to verify Java programs. There are some features which KeY does not currently support such as Generics and Lambdas\cite{Ahrendt2016}.
+			\subsubsection{Examples of Usages}
+			{
+				This has been used to verify a part of a Electronic voting system written in Java and KeY has also been used to verify a couple of sorting algorithms
+			}
+		}
+		\subsection{Java PathFinder}
+		{
+			\subsubsection{Background}
+			{
+				Pathfinder was originally developed as a state model checker but has since been developed to use many verification techniques\cite{Mehlitz2013}. 
+			}
+			\subsubsection{Details}
+			{
+				This analyses the Java bytecode this means that it can be run on any language which compiles to Java bytecode such as Scala or Kotlin.
+			}
+		}
+		
+	}
+	
+	\section{Verifiable Languages}
+	{
+		\subsection{\texorpdfstring{Spec\#}{}}
+		{
+			Barnett et al. describes this as a programming system, it is designed as a small extension to C\# This runs on the .NET framework therefore can be used with other .NET languages. Many developers have easy access to the language through visual studio \enquote{The Spec\# system is fully integrated into the Microsoft Visual Studio environment.}\cite{Barnett2005}. Barnett et al. also lists several features which Spec\# adds to C\# such as:
+			\begin{itemize}
+				\item{\enquote{type support for distinguishing non-null object references from possibly-null object references}\cite{Barnett2005}}
+				\item{\enquote{method specifications like pre- and postconditions}\cite{Barnett2005}}
+				\item{\enquote{support for constraining the data fields of objects}\cite{Barnett2005}}
+			\end{itemize}
+			Because this works on the .NET framework functions can be called from other languages meaning it is possible to call a method with parameters which violate the preconditions in this case Spec\# provides the option to specify an exception to be thrown in the case where a precondition is not met.
+		}
+		\subsection{Dafny}
+		{
+			This is another language from Microsoft, It has been developed to be easy to use for non experts in the area of software verification and avoid the need to understand the formal proofs like the tool in \cref{sec:krakatoa}. Error messages are calculated in the background while the developer is working.\cite{Leino2010} When a program written in Dafny is verified it is translated into Boogie which is a verification language. This can then be verified which proves the verification of the original Dafny program\cite{Leino2008}.
+		}
+		\subsection{Spark Ada}
+		{
+			Spark is a Verifiable language based on Ada it uses pre and post conditions as contracts for verification. It appears to be used on a number of mission critical pieces of software mainly on embedded systems. This is actually quite a old \enquote{Verifiable Language} with there being a few versions of spark with the first being base on Ada 83.
+		}
+		\subsection{Boogie}
+		{
+			This is an open source tool which uses the Z3 SMT solver to verify the Boogie language. It was developed with Spec\#. There are a number of languages which have tools which allow them to be translated to Boogie an then verified. The language is made up of\cite{Leino2008a}:
+			\begin{itemize}
+				\item {Type}
+				\item {Constants}
+				\item {Functions}
+				\item {Axioms}
+				\item {Global Variables}
+				\item {Procedure Declarations}
+				\item {Procedure Implementation}
+			\end{itemize}
+			These are then turned into logical formulas which can then be formally verified.
+		}
+	}
+	\section{Other Tools/Languages}
+	{
+		\subsection{JML - Java Modelling Language}
+		{
+			\subsubsection{Background}
+			{
+				This was designed to provide documentation for interfaces and allow for the communication of the behaviour of programs. 
+			}
+			\subsection{Details}
+			{
+				JML is a type of BISL(Behavioural Interface Specification) this means that is a language which describes a programs interface and behaviour. JML can either be in their own files or as annotations in Java\cite{Leavens2006}.
+			}
+			\subsection{Examples of usages}
+			{
+				As mentioned in \cref{sec:ESCJava} JML has been used to provide specifications/contracts as a part of their bug finding tool. It has also been used in the University of Nijmegen as a part of their tool to provide total correctness checking to a program\cite{Jacobs2001}.
+			}
+		}
+	}
+
+	\section{Conclusion}
+	{
+		In Conclusion there are many practical applications of formal program verification techniques which could be used. Some of which focus on adding formal verification to existing programs and some which focuses on writing new formally verified programs or rewriting programs in verifiable languages. Given more time I would have liked to conducted more research into many of the tools and languages. Also, I would have liked to conduct some experiments with how easy each of the tools and languages are to use and if they all verify the same program correctly.
+	}
+	
+	\newpage
+	
+	\printbibliography[heading=bibintoc,title=References]
+\end{document}
