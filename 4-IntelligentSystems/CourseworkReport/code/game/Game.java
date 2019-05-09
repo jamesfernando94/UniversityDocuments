@@ -185,7 +185,7 @@ public class Game implements Cloneable {
 		return draughtArrayList.stream().filter(draught -> draught.xPosition == x && draught.yPosition == y).findAny().get();
 	}
 
-	public Game successorFunction(Move move) {
+	public Game successor(Move move) {
 		Game rtnGame = this.clone();
 
 		rtnGame.selectMove(move);

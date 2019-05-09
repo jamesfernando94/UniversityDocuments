@@ -16,6 +16,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import moves.Move;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -59,7 +60,7 @@ public class Main extends Application {
 
 		VBox controlPanel = new VBox();
 		HBox aiDifficulty = new HBox();
-		Label aiDifficultyLabel = new Label("AI Difficulty Level (0-6): ");
+		Label aiDifficultyLabel = new Label("AI Difficulty Level (0-7): ");
 		TextField aiDifficultyTextField = new TextField(String.format("%d",ai.getDifficulty()));
 		aiDifficulty.getChildren().addAll(aiDifficultyLabel, aiDifficultyTextField);
 		controlPanel.getChildren().add(aiDifficulty);
@@ -68,7 +69,7 @@ public class Main extends Application {
 		updateValues.setOnMouseClicked(event -> {
 			String str = aiDifficultyTextField.getText();
 			int temp = Integer.parseInt(str);
-			ai.setDifficulty(temp > 6 ? 6 : temp);
+			ai.setDifficulty(temp > 7 ? 7 : temp);
 			updateDisplay();
 		});
 		controlPanel.getChildren().add(updateValues);
@@ -82,6 +83,16 @@ public class Main extends Application {
 		});
 
 		controlPanel.getChildren().add(competeAIMove);
+
+		Button rules = new Button("Rules");
+		rules.setOnMouseClicked(event -> {
+			try {
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create("http://www.indepthinfo.com/checkers/play.shtml"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
+		controlPanel.getChildren().add(rules);
 		controlPanel.setAlignment(Pos.CENTER);
 		controlPanel.setSpacing(10);
 		return controlPanel;
